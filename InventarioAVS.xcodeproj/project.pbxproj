@@ -28,6 +28,8 @@
 		D69273DC27A1C6290079B253 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69273DA27A1C6290079B253 /* MenuCollectionViewCell.xib */; };
 		D69273E227A1FD460079B253 /* ProductDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69273E027A1FD460079B253 /* ProductDetailTableViewCell.swift */; };
 		D69273E327A1FD460079B253 /* ProductDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69273E127A1FD460079B253 /* ProductDetailTableViewCell.xib */; };
+		D69273E927A20B080079B253 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69273E727A20B080079B253 /* UserDetailViewController.swift */; };
+		D69273EA27A20B080079B253 /* UserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69273E827A20B080079B253 /* UserDetailViewController.xib */; };
 		D698BCAC278FAE7100FB81D1 /* UsuariosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D698BCAB278FAE7100FB81D1 /* UsuariosViewController.swift */; };
 		D6A2F44D278FBAAC0040258E /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2F44B278FBAAC0040258E /* UsersTableViewCell.swift */; };
 		D6A2F44E278FBAAC0040258E /* UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A2F44C278FBAAC0040258E /* UsersTableViewCell.xib */; };
@@ -63,6 +65,8 @@
 		D69273DA27A1C6290079B253 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
 		D69273E027A1FD460079B253 /* ProductDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailTableViewCell.swift; sourceTree = "<group>"; };
 		D69273E127A1FD460079B253 /* ProductDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailTableViewCell.xib; sourceTree = "<group>"; };
+		D69273E727A20B080079B253 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		D69273E827A20B080079B253 /* UserDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailViewController.xib; sourceTree = "<group>"; };
 		D698BCAB278FAE7100FB81D1 /* UsuariosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuariosViewController.swift; sourceTree = "<group>"; };
 		D6A2F44B278FBAAC0040258E /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		D6A2F44C278FBAAC0040258E /* UsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersTableViewCell.xib; sourceTree = "<group>"; };
@@ -216,9 +220,19 @@
 			path = cells;
 			sourceTree = "<group>";
 		};
+		D69273E627A20AE70079B253 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D69273E727A20B080079B253 /* UserDetailViewController.swift */,
+				D69273E827A20B080079B253 /* UserDetailViewController.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		D698BCAA278FAE5C00FB81D1 /* Usuarios */ = {
 			isa = PBXGroup;
 			children = (
+				D69273E627A20AE70079B253 /* Detail */,
 				D6A2F44A278FBA950040258E /* cells */,
 				D698BCAB278FAE7100FB81D1 /* UsuariosViewController.swift */,
 				D69273B727A0BC5E0079B253 /* users.storyboard */,
@@ -350,6 +364,7 @@
 				D6F9A8A4278A4F74002D2591 /* Assets.xcassets in Resources */,
 				D6A2F44E278FBAAC0040258E /* UsersTableViewCell.xib in Resources */,
 				D6F9A8A2278A4F71002D2591 /* Main.storyboard in Resources */,
+				D69273EA27A20B080079B253 /* UserDetailViewController.xib in Resources */,
 				D69273E327A1FD460079B253 /* ProductDetailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +382,7 @@
 				D61B8B0C278E106C00CFABEE /* ProductoTableViewCell.swift in Sources */,
 				D69273C227A0BF020079B253 /* LoginViewController.swift in Sources */,
 				D61B8AFB278E070000CFABEE /* Alerts.swift in Sources */,
+				D69273E927A20B080079B253 /* UserDetailViewController.swift in Sources */,
 				D698BCAC278FAE7100FB81D1 /* UsuariosViewController.swift in Sources */,
 				D6A2F454278FC1E70040258E /* QrReaderViewController.swift in Sources */,
 				D69273CF27A1C0E70079B253 /* MenuViewController.swift in Sources */,

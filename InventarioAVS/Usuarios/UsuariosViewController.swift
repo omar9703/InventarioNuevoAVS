@@ -49,6 +49,18 @@ class UsuariosViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.tableUsers.reloadData()
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UserDetailViewController()
+        if userdes
+        {
+            vc.device = usuarios[indexPath.row]
+        }
+        else
+        {
+            vc.device = usuariosFiltered[indexPath.row]
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if userdes
         {

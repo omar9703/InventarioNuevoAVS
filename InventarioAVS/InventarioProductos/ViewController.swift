@@ -53,6 +53,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             if evaluateResponse(controller: self, httpCode: httpcode)
             {
                 print(dataResponse?.count)
+                self.devices.removeAll()
                 self.devices = dataResponse!
                 DispatchQueue.main.async {
                     self.alert.dismiss(animated: true, completion: nil)

@@ -13,6 +13,7 @@ class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         tableDetail.register(UINib(nibName: "ProductDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        tableDetail.backgroundColor = .clear
         if let _ = device
         {
             tableDetail.reloadData()
@@ -25,7 +26,7 @@ class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDat
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductDetailTableViewCell
-        
+        cell.backgroundColor = .clear
         if indexPath.row == 0
         {
             cell.titulo.text = "Nombre"
