@@ -16,6 +16,7 @@ class UsuariosViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         tableUsers.register(UINib(nibName: "UsersTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         getData()
+        hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     func getData()
@@ -59,20 +60,25 @@ class UsuariosViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UsersTableViewCell
         if userdes
         {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UsersTableViewCell
+        
         cell.nombre.text = usuarios[indexPath.row].nombre! + " \(usuarios[indexPath.row].apellido_paterno!)"
         cell.tipoUsuario.text = usuarios[indexPath.row].rol!
-        return cell
+        
         }
         else
         {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UsersTableViewCell
             cell.nombre.text = usuariosFiltered[indexPath.row].nombre! + " \(usuariosFiltered[indexPath.row].apellido_paterno!)"
             cell.tipoUsuario.text = usuariosFiltered[indexPath.row].rol!
-            return cell
+            
         }
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        cell.nombre.textColor = .white
+        cell.tipoUsuario.textColor = .white
+        return cell
     }
 
 }

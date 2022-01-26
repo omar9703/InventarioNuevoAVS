@@ -26,6 +26,8 @@
 		D69273D627A1C3AA0079B253 /* MenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69273D527A1C3AA0079B253 /* MenuItems.swift */; };
 		D69273DB27A1C6290079B253 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69273D927A1C6290079B253 /* MenuCollectionViewCell.swift */; };
 		D69273DC27A1C6290079B253 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69273DA27A1C6290079B253 /* MenuCollectionViewCell.xib */; };
+		D69273E227A1FD460079B253 /* ProductDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69273E027A1FD460079B253 /* ProductDetailTableViewCell.swift */; };
+		D69273E327A1FD460079B253 /* ProductDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69273E127A1FD460079B253 /* ProductDetailTableViewCell.xib */; };
 		D698BCAC278FAE7100FB81D1 /* UsuariosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D698BCAB278FAE7100FB81D1 /* UsuariosViewController.swift */; };
 		D6A2F44D278FBAAC0040258E /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2F44B278FBAAC0040258E /* UsersTableViewCell.swift */; };
 		D6A2F44E278FBAAC0040258E /* UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A2F44C278FBAAC0040258E /* UsersTableViewCell.xib */; };
@@ -59,6 +61,8 @@
 		D69273D527A1C3AA0079B253 /* MenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItems.swift; sourceTree = "<group>"; };
 		D69273D927A1C6290079B253 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		D69273DA27A1C6290079B253 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
+		D69273E027A1FD460079B253 /* ProductDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailTableViewCell.swift; sourceTree = "<group>"; };
+		D69273E127A1FD460079B253 /* ProductDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailTableViewCell.xib; sourceTree = "<group>"; };
 		D698BCAB278FAE7100FB81D1 /* UsuariosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuariosViewController.swift; sourceTree = "<group>"; };
 		D6A2F44B278FBAAC0040258E /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		D6A2F44C278FBAAC0040258E /* UsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersTableViewCell.xib; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 		D6139F6127912AB800EB8C5F /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				D69273DF27A1FD1A0079B253 /* cells */,
 				D6139F6227912AD000EB8C5F /* DetailViewController.swift */,
 				D6139F6327912AD000EB8C5F /* DetailViewController.xib */,
 			);
@@ -200,6 +205,15 @@
 				D69273DA27A1C6290079B253 /* MenuCollectionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		D69273DF27A1FD1A0079B253 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				D69273E027A1FD460079B253 /* ProductDetailTableViewCell.swift */,
+				D69273E127A1FD460079B253 /* ProductDetailTableViewCell.xib */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		D698BCAA278FAE5C00FB81D1 /* Usuarios */ = {
@@ -336,6 +350,7 @@
 				D6F9A8A4278A4F74002D2591 /* Assets.xcassets in Resources */,
 				D6A2F44E278FBAAC0040258E /* UsersTableViewCell.xib in Resources */,
 				D6F9A8A2278A4F71002D2591 /* Main.storyboard in Resources */,
+				D69273E327A1FD460079B253 /* ProductDetailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +371,7 @@
 				D6A2F454278FC1E70040258E /* QrReaderViewController.swift in Sources */,
 				D69273CF27A1C0E70079B253 /* MenuViewController.swift in Sources */,
 				D61C39542793A86000FE42A1 /* HistorialViewController.swift in Sources */,
+				D69273E227A1FD460079B253 /* ProductDetailTableViewCell.swift in Sources */,
 				D61B8B12278E162700CFABEE /* FilterViewController.swift in Sources */,
 				D69273DB27A1C6290079B253 /* MenuCollectionViewCell.swift in Sources */,
 				D6F9A89B278A4F71002D2591 /* AppDelegate.swift in Sources */,

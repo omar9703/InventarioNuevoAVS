@@ -19,7 +19,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         MenuCollection.backgroundColor = .clear
         MenuCollection.reloadData()
         self.navigationItem.title = ""
-        
+        setNavigationBar()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

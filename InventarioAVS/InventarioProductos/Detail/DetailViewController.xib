@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,7 +20,7 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DmP-fT-8ki">
                     <rect key="frame" x="10" y="44" width="394" height="818"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" red="0.074509803920000006" green="0.070588235289999995" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="WVj-gl-ezg"/>
                         <outlet property="delegate" destination="-1" id="im5-c0-3td"/>
@@ -29,7 +28,7 @@
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.074509803920000006" green="0.070588235289999995" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="DmP-fT-8ki" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="00n-VA-o6b"/>
                 <constraint firstItem="DmP-fT-8ki" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="F7V-aq-jqE"/>
@@ -39,9 +38,4 @@
             <point key="canvasLocation" x="18.840579710144929" y="60.9375"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

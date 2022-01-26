@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
         hideKeyboardWhenTappedAround()
+        self.navigationItem.title = ""
     }
     
     @IBAction func LoginAction(_ sender: UIButton) {

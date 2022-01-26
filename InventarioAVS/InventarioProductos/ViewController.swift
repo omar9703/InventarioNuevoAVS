@@ -8,9 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate, FilterSwitchProtocol, qrReaderProtocol {
-    
-    
-    
+    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+    let alert = UIAlertController(title: nil, message: "Cargando", preferredStyle: .alert)
     @IBOutlet weak var qrButton: UIBarButtonItem!
     @IBOutlet weak var search: UISearchBar!
     var filtro = TypeFilter.nombre
@@ -21,29 +20,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var filteredDevices = Devices()
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
         productsTable.register(UINib(nibName: "ProductoTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         qrButton.isEnabled = false
         search.backgroundColor = .clear
         productsTable.backgroundColor = .clear
-        setNavigationBar()
         hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
-    func setNavigationBar() {
+    
 
-        let imgBackArrow = UIImage(named: "ARROW")!
-        let y = resizeImage(image: imgBackArrow, targetSize: CGSize(width: 25, height: 25))
-        
-        navigationController?.navigationBar.backIndicatorImage = y
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = y
-
-        navigationItem.leftItemsSupplementBackButton = true
-        navigationItem.backButtonTitle = ""
-    }
-
-    @objc func backToMain() {
-        self.navigationController?.popViewController(animated: true)
-    }
     @IBAction func openFilterView(_ sender: UIBarButtonItem) {
         let vc = UIStoryboard(name: "Filtro", bundle: nil).instantiateViewController(identifier: "filtro") as! FilterViewController
         vc.delegate = self
@@ -53,18 +41,29 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
         getData()
     }
     
     func getData()
     {
+        
         requestPetition(ofType: Devices.self, typeRequest: .GET, url: urlAVSdevice.devices) { (httpcode, dataResponse) in
             if evaluateResponse(controller: self, httpCode: httpcode)
             {
                 print(dataResponse?.count)
                 self.devices = dataResponse!
                 DispatchQueue.main.async {
+                    self.alert.dismiss(animated: true, completion: nil)
                     self.productsTable.reloadData()
+                }
+                
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    self.alert.dismiss(animated: true, completion: nil)
                 }
                 
             }

@@ -76,6 +76,17 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    func setNavigationBar() {
+
+        let imgBackArrow = UIImage(named: "ARROW")!
+        let y = resizeImage(image: imgBackArrow, targetSize: CGSize(width: 25, height: 25))
+        
+        navigationController?.navigationBar.backIndicatorImage = y
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = y
+
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.backButtonTitle = ""
+    }
 }
 func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
     let size = image.size
