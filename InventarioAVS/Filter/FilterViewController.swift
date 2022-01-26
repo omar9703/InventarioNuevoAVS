@@ -25,6 +25,8 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var marcaSwitch: UISwitch!
     @IBOutlet weak var CodigoSwitch: UISwitch!
     @IBOutlet weak var SerieSwitch: UISwitch!
+    let colorOff = UIColor(red: 8/255, green: 8/255, blue: 70/255, alpha: 1)
+    let colorOn = UIColor(red: 47/255, green: 178/255, blue: 255/255, alpha: 1)
     var tipo = TypeFilter.nombre
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,10 @@ class FilterViewController: UIViewController {
                 marcaSwitch.setOn(false, animated: true)
                 CodigoSwitch.setOn(false, animated: true)
                 SerieSwitch.setOn(false, animated: true)
+            ModeloSwitch.thumbTintColor = colorOff
+            marcaSwitch.thumbTintColor = colorOff
+            CodigoSwitch.thumbTintColor = colorOff
+            SerieSwitch.thumbTintColor = colorOff
             break
         case .modelo:
                 nombreSwitch.setOn(false, animated: true)
@@ -47,13 +53,21 @@ class FilterViewController: UIViewController {
                 CodigoSwitch.setOn(false, animated: true)
                 SerieSwitch.setOn(false, animated: true)
                 ModeloSwitch.setOn(true, animated: true)
+            nombreSwitch.thumbTintColor = colorOff
+            marcaSwitch.thumbTintColor = colorOff
+            CodigoSwitch.thumbTintColor = colorOff
+            SerieSwitch.thumbTintColor = colorOff
             break
         case .marca:
                 ModeloSwitch.setOn(false, animated: true)
                 nombreSwitch.setOn(false, animated: true)
                 CodigoSwitch.setOn(false, animated: true)
                 SerieSwitch.setOn(false, animated: true)
-            marcaSwitch.setOn(true, animated: true)
+                marcaSwitch.setOn(true, animated: true)
+            ModeloSwitch.thumbTintColor = colorOff
+            nombreSwitch.thumbTintColor = colorOff
+            CodigoSwitch.thumbTintColor = colorOff
+            SerieSwitch.thumbTintColor = colorOff
             break
         case .codigo:
                 ModeloSwitch.setOn(false, animated: true)
@@ -61,6 +75,10 @@ class FilterViewController: UIViewController {
                 nombreSwitch.setOn(false, animated: true)
                 SerieSwitch.setOn(false, animated: true)
             CodigoSwitch.setOn(true, animated: true)
+            ModeloSwitch.thumbTintColor = colorOff
+            marcaSwitch.thumbTintColor = colorOff
+            nombreSwitch.thumbTintColor = colorOff
+            SerieSwitch.thumbTintColor = colorOff
             break
         case .serie:
             SerieSwitch.setOn(true, animated: true)
@@ -68,6 +86,10 @@ class FilterViewController: UIViewController {
                 marcaSwitch.setOn(false, animated: true)
                 CodigoSwitch.setOn(false, animated: true)
                 nombreSwitch.setOn(false, animated: true)
+            ModeloSwitch.thumbTintColor = colorOff
+            marcaSwitch.thumbTintColor = colorOff
+            CodigoSwitch.thumbTintColor = colorOff
+            nombreSwitch.thumbTintColor = colorOff
             break
         }
     }
@@ -82,6 +104,11 @@ class FilterViewController: UIViewController {
                 marcaSwitch.setOn(false, animated: true)
                 CodigoSwitch.setOn(false, animated: true)
                 SerieSwitch.setOn(false, animated: true)
+                ModeloSwitch.thumbTintColor = colorOff
+                marcaSwitch.thumbTintColor = colorOff
+                SerieSwitch.thumbTintColor = colorOff
+                CodigoSwitch.thumbTintColor = colorOff
+                nombreSwitch.thumbTintColor = colorOn
             }
             break
         case ModeloSwitch:
@@ -92,6 +119,11 @@ class FilterViewController: UIViewController {
                 marcaSwitch.setOn(false, animated: true)
                 CodigoSwitch.setOn(false, animated: true)
                 SerieSwitch.setOn(false, animated: true)
+                ModeloSwitch.thumbTintColor = colorOn
+                marcaSwitch.thumbTintColor = colorOff
+                SerieSwitch.thumbTintColor = colorOff
+                CodigoSwitch.thumbTintColor = colorOff
+                nombreSwitch.thumbTintColor = colorOff
             }
             break
         case marcaSwitch:
@@ -102,6 +134,11 @@ class FilterViewController: UIViewController {
                 nombreSwitch.setOn(false, animated: true)
                 CodigoSwitch.setOn(false, animated: true)
                 SerieSwitch.setOn(false, animated: true)
+                ModeloSwitch.thumbTintColor = colorOff
+                marcaSwitch.thumbTintColor = colorOn
+                SerieSwitch.thumbTintColor = colorOff
+                CodigoSwitch.thumbTintColor = colorOff
+                nombreSwitch.thumbTintColor = colorOff
             }
             break
         case CodigoSwitch:
@@ -112,6 +149,11 @@ class FilterViewController: UIViewController {
                 marcaSwitch.setOn(false, animated: true)
                 nombreSwitch.setOn(false, animated: true)
                 SerieSwitch.setOn(false, animated: true)
+                ModeloSwitch.thumbTintColor = colorOff
+                marcaSwitch.thumbTintColor = colorOff
+                SerieSwitch.thumbTintColor = colorOff
+                CodigoSwitch.thumbTintColor = colorOn
+                nombreSwitch.thumbTintColor = colorOff
             }
             break
         case SerieSwitch:
@@ -122,21 +164,19 @@ class FilterViewController: UIViewController {
                 marcaSwitch.setOn(false, animated: true)
                 CodigoSwitch.setOn(false, animated: true)
                 nombreSwitch.setOn(false, animated: true)
+                ModeloSwitch.thumbTintColor = colorOff
+                marcaSwitch.thumbTintColor = colorOff
+                SerieSwitch.thumbTintColor = colorOn
+                CodigoSwitch.thumbTintColor = colorOff
+                nombreSwitch.thumbTintColor = colorOff
             }
             break
         default:
             break
         }
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func closeAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
 }

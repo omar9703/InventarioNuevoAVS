@@ -17,6 +17,15 @@
 		D61B8B0D278E106C00CFABEE /* ProductoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61B8B0B278E106C00CFABEE /* ProductoTableViewCell.xib */; };
 		D61B8B12278E162700CFABEE /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B8B11278E162700CFABEE /* FilterViewController.swift */; };
 		D61C39542793A86000FE42A1 /* HistorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61C39532793A86000FE42A1 /* HistorialViewController.swift */; };
+		D69273B827A0BC5E0079B253 /* users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69273B727A0BC5E0079B253 /* users.storyboard */; };
+		D69273BB27A0BCC50079B253 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69273BA27A0BCC50079B253 /* Products.storyboard */; };
+		D69273BE27A0BCF50079B253 /* Filtro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69273BD27A0BCF50079B253 /* Filtro.storyboard */; };
+		D69273C227A0BF020079B253 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69273C127A0BF020079B253 /* LoginViewController.swift */; };
+		D69273CC27A1C0A00079B253 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69273CB27A1C0A00079B253 /* Menu.storyboard */; };
+		D69273CF27A1C0E70079B253 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69273CE27A1C0E70079B253 /* MenuViewController.swift */; };
+		D69273D627A1C3AA0079B253 /* MenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69273D527A1C3AA0079B253 /* MenuItems.swift */; };
+		D69273DB27A1C6290079B253 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69273D927A1C6290079B253 /* MenuCollectionViewCell.swift */; };
+		D69273DC27A1C6290079B253 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69273DA27A1C6290079B253 /* MenuCollectionViewCell.xib */; };
 		D698BCAC278FAE7100FB81D1 /* UsuariosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D698BCAB278FAE7100FB81D1 /* UsuariosViewController.swift */; };
 		D6A2F44D278FBAAC0040258E /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2F44B278FBAAC0040258E /* UsersTableViewCell.swift */; };
 		D6A2F44E278FBAAC0040258E /* UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A2F44C278FBAAC0040258E /* UsersTableViewCell.xib */; };
@@ -41,6 +50,15 @@
 		D61B8B0B278E106C00CFABEE /* ProductoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductoTableViewCell.xib; sourceTree = "<group>"; };
 		D61B8B11278E162700CFABEE /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		D61C39532793A86000FE42A1 /* HistorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialViewController.swift; sourceTree = "<group>"; };
+		D69273B727A0BC5E0079B253 /* users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = users.storyboard; sourceTree = "<group>"; };
+		D69273BA27A0BCC50079B253 /* Products.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Products.storyboard; sourceTree = "<group>"; };
+		D69273BD27A0BCF50079B253 /* Filtro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filtro.storyboard; sourceTree = "<group>"; };
+		D69273C127A0BF020079B253 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D69273CB27A1C0A00079B253 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		D69273CE27A1C0E70079B253 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		D69273D527A1C3AA0079B253 /* MenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItems.swift; sourceTree = "<group>"; };
+		D69273D927A1C6290079B253 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		D69273DA27A1C6290079B253 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
 		D698BCAB278FAE7100FB81D1 /* UsuariosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuariosViewController.swift; sourceTree = "<group>"; };
 		D6A2F44B278FBAAC0040258E /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		D6A2F44C278FBAAC0040258E /* UsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersTableViewCell.xib; sourceTree = "<group>"; };
@@ -124,6 +142,7 @@
 				D6139F6127912AB800EB8C5F /* Detail */,
 				D6F9A89E278A4F71002D2591 /* ViewController.swift */,
 				D61B8B09278E104E00CFABEE /* cells */,
+				D69273BA27A0BCC50079B253 /* Products.storyboard */,
 			);
 			path = InventarioProductos;
 			sourceTree = "<group>";
@@ -141,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				D61B8B11278E162700CFABEE /* FilterViewController.swift */,
+				D69273BD27A0BCF50079B253 /* Filtro.storyboard */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -153,11 +173,41 @@
 			path = Historial;
 			sourceTree = "<group>";
 		};
+		D69273C027A0BEC10079B253 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D6F9A8A0278A4F71002D2591 /* Main.storyboard */,
+				D69273C127A0BF020079B253 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D69273CA27A1C0890079B253 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				D69273D827A1C6130079B253 /* Cells */,
+				D69273CB27A1C0A00079B253 /* Menu.storyboard */,
+				D69273CE27A1C0E70079B253 /* MenuViewController.swift */,
+				D69273D527A1C3AA0079B253 /* MenuItems.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		D69273D827A1C6130079B253 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D69273D927A1C6290079B253 /* MenuCollectionViewCell.swift */,
+				D69273DA27A1C6290079B253 /* MenuCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		D698BCAA278FAE5C00FB81D1 /* Usuarios */ = {
 			isa = PBXGroup;
 			children = (
 				D6A2F44A278FBA950040258E /* cells */,
 				D698BCAB278FAE7100FB81D1 /* UsuariosViewController.swift */,
+				D69273B727A0BC5E0079B253 /* users.storyboard */,
 			);
 			path = Usuarios;
 			sourceTree = "<group>";
@@ -199,6 +249,8 @@
 		D6F9A899278A4F71002D2591 /* InventarioAVS */ = {
 			isa = PBXGroup;
 			children = (
+				D69273CA27A1C0890079B253 /* Menu */,
+				D69273C027A0BEC10079B253 /* Login */,
 				D61C39512793A7E600FE42A1 /* Historial */,
 				D6A2F451278FC1C70040258E /* QrReader */,
 				D698BCAA278FAE5C00FB81D1 /* Usuarios */,
@@ -208,7 +260,6 @@
 				D61B8AF8278E06EB00CFABEE /* Utilities */,
 				D6F9A89A278A4F71002D2591 /* AppDelegate.swift */,
 				D6F9A89C278A4F71002D2591 /* SceneDelegate.swift */,
-				D6F9A8A0278A4F71002D2591 /* Main.storyboard */,
 				D6F9A8A3278A4F74002D2591 /* Assets.xcassets */,
 				D6F9A8A5278A4F74002D2591 /* LaunchScreen.storyboard */,
 				D6F9A8A8278A4F74002D2591 /* Info.plist */,
@@ -273,10 +324,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D69273BB27A0BCC50079B253 /* Products.storyboard in Resources */,
 				D6F9A8A7278A4F74002D2591 /* LaunchScreen.storyboard in Resources */,
+				D69273B827A0BC5E0079B253 /* users.storyboard in Resources */,
 				D61B8B0D278E106C00CFABEE /* ProductoTableViewCell.xib in Resources */,
 				D6139F6527912AD000EB8C5F /* DetailViewController.xib in Resources */,
 				D6A2F455278FC1E70040258E /* QrReaderViewController.xib in Resources */,
+				D69273CC27A1C0A00079B253 /* Menu.storyboard in Resources */,
+				D69273DC27A1C6290079B253 /* MenuCollectionViewCell.xib in Resources */,
+				D69273BE27A0BCF50079B253 /* Filtro.storyboard in Resources */,
 				D6F9A8A4278A4F74002D2591 /* Assets.xcassets in Resources */,
 				D6A2F44E278FBAAC0040258E /* UsersTableViewCell.xib in Resources */,
 				D6F9A8A2278A4F71002D2591 /* Main.storyboard in Resources */,
@@ -291,13 +347,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6139F6427912AD000EB8C5F /* DetailViewController.swift in Sources */,
+				D69273D627A1C3AA0079B253 /* MenuItems.swift in Sources */,
 				D6F9A89F278A4F71002D2591 /* ViewController.swift in Sources */,
 				D61B8B0C278E106C00CFABEE /* ProductoTableViewCell.swift in Sources */,
+				D69273C227A0BF020079B253 /* LoginViewController.swift in Sources */,
 				D61B8AFB278E070000CFABEE /* Alerts.swift in Sources */,
 				D698BCAC278FAE7100FB81D1 /* UsuariosViewController.swift in Sources */,
 				D6A2F454278FC1E70040258E /* QrReaderViewController.swift in Sources */,
+				D69273CF27A1C0E70079B253 /* MenuViewController.swift in Sources */,
 				D61C39542793A86000FE42A1 /* HistorialViewController.swift in Sources */,
 				D61B8B12278E162700CFABEE /* FilterViewController.swift in Sources */,
+				D69273DB27A1C6290079B253 /* MenuCollectionViewCell.swift in Sources */,
 				D6F9A89B278A4F71002D2591 /* AppDelegate.swift in Sources */,
 				D61B8B05278E087600CFABEE /* URL.swift in Sources */,
 				D61B8AF5278E05F400CFABEE /* Network.swift in Sources */,

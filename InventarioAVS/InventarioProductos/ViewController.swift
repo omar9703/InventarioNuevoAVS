@@ -23,10 +23,29 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         super.viewDidLoad()
         productsTable.register(UINib(nibName: "ProductoTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         qrButton.isEnabled = false
+        search.backgroundColor = .clear
+        productsTable.backgroundColor = .clear
+        setNavigationBar()
+        hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
+    func setNavigationBar() {
+
+        let imgBackArrow = UIImage(named: "ARROW")!
+        let y = resizeImage(image: imgBackArrow, targetSize: CGSize(width: 25, height: 25))
+        
+        navigationController?.navigationBar.backIndicatorImage = y
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = y
+
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.backButtonTitle = ""
+    }
+
+    @objc func backToMain() {
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBAction func openFilterView(_ sender: UIBarButtonItem) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "filtro") as! FilterViewController
+        let vc = UIStoryboard(name: "Filtro", bundle: nil).instantiateViewController(identifier: "filtro") as! FilterViewController
         vc.delegate = self
         vc.tipo = filtro
         self.present(vc, animated: true, completion: nil)
@@ -69,22 +88,26 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductoTableViewCell
         if !deviceDes
         {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductoTableViewCell
+            
             cell.marca.text = filteredDevices[indexPath.row].marca
             cell.modelo.text = filteredDevices[indexPath.row].modelo
             cell.nombre.text = filteredDevices[indexPath.row].producto
-            return cell
         }
         else
         {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductoTableViewCell
             cell.marca.text = devices[indexPath.row].marca
             cell.modelo.text = devices[indexPath.row].modelo
             cell.nombre.text = devices[indexPath.row].producto
-            return cell
+            
         }
+        cell.backgroundColor = .clear
+        cell.marca.textColor = .white
+        cell.modelo.textColor = .white
+        cell.nombre.textColor = .white
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
