@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0733925C27AB05AC000E60F6 /* xtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733925B27AB05AC000E60F6 /* xtensions.swift */; };
 		D6139F6427912AD000EB8C5F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6139F6227912AD000EB8C5F /* DetailViewController.swift */; };
 		D6139F6527912AD000EB8C5F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6139F6327912AD000EB8C5F /* DetailViewController.xib */; };
 		D61B8AF5278E05F400CFABEE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B8AF4278E05F400CFABEE /* Network.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0733925B27AB05AC000E60F6 /* xtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xtensions.swift; sourceTree = "<group>"; };
 		D6139F6227912AD000EB8C5F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D6139F6327912AD000EB8C5F /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		D61B8AF4278E05F400CFABEE /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0733925827AB057D000E60F6 /* Xtensions */ = {
+			isa = PBXGroup;
+			children = (
+				0733925B27AB05AC000E60F6 /* xtensions.swift */,
+			);
+			path = Xtensions;
+			sourceTree = "<group>";
+		};
 		D6139F6127912AB800EB8C5F /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 		D61B8AF8278E06EB00CFABEE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0733925827AB057D000E60F6 /* Xtensions */,
 				D61B8B03278E086500CFABEE /* URL */,
 				D61B8AF9278E06F500CFABEE /* Alerts */,
 				D61B8AF3278E05DE00CFABEE /* Network */,
@@ -396,6 +407,7 @@
 				D6F9A89D278A4F71002D2591 /* SceneDelegate.swift in Sources */,
 				D61B8B00278E073B00CFABEE /* Estructuras.swift in Sources */,
 				D6A2F44D278FBAAC0040258E /* UsersTableViewCell.swift in Sources */,
+				0733925C27AB05AC000E60F6 /* xtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
