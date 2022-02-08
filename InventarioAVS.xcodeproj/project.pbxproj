@@ -10,6 +10,8 @@
 		0733925C27AB05AC000E60F6 /* xtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733925B27AB05AC000E60F6 /* xtensions.swift */; };
 		07EE7F5D27AF68760003AE8D /* Perfil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EE7F5C27AF68760003AE8D /* Perfil.storyboard */; };
 		07EE7F5F27AF68A40003AE8D /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EE7F5E27AF68A40003AE8D /* PerfilViewController.swift */; };
+		07EE7F6627AF7EF90003AE8D /* Reporte.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */; };
+		07EE7F6927AF7F0B0003AE8D /* ReporteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */; };
 		D6139F6427912AD000EB8C5F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6139F6227912AD000EB8C5F /* DetailViewController.swift */; };
 		D6139F6527912AD000EB8C5F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6139F6327912AD000EB8C5F /* DetailViewController.xib */; };
 		D61B8AF5278E05F400CFABEE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B8AF4278E05F400CFABEE /* Network.swift */; };
@@ -50,6 +52,8 @@
 		0733925B27AB05AC000E60F6 /* xtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xtensions.swift; sourceTree = "<group>"; };
 		07EE7F5C27AF68760003AE8D /* Perfil.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Perfil.storyboard; sourceTree = "<group>"; };
 		07EE7F5E27AF68A40003AE8D /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
+		07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reporte.storyboard; sourceTree = "<group>"; };
+		07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReporteViewController.swift; sourceTree = "<group>"; };
 		D6139F6227912AD000EB8C5F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D6139F6327912AD000EB8C5F /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		D61B8AF4278E05F400CFABEE /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -114,6 +118,15 @@
 				07EE7F5E27AF68A40003AE8D /* PerfilViewController.swift */,
 			);
 			path = Perfil;
+			sourceTree = "<group>";
+		};
+		07EE7F6027AF7EC30003AE8D /* Reporte */ = {
+			isa = PBXGroup;
+			children = (
+				07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */,
+				07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */,
+			);
+			path = Reporte;
 			sourceTree = "<group>";
 		};
 		D6139F6127912AB800EB8C5F /* Detail */ = {
@@ -301,6 +314,7 @@
 		D6F9A899278A4F71002D2591 /* InventarioAVS */ = {
 			isa = PBXGroup;
 			children = (
+				07EE7F6027AF7EC30003AE8D /* Reporte */,
 				07EE7F5B27AF68520003AE8D /* Perfil */,
 				D69273CA27A1C0890079B253 /* Menu */,
 				D69273C027A0BEC10079B253 /* Login */,
@@ -387,6 +401,7 @@
 				07EE7F5D27AF68760003AE8D /* Perfil.storyboard in Resources */,
 				D69273DC27A1C6290079B253 /* MenuCollectionViewCell.xib in Resources */,
 				D69273BE27A0BCF50079B253 /* Filtro.storyboard in Resources */,
+				07EE7F6627AF7EF90003AE8D /* Reporte.storyboard in Resources */,
 				D6F9A8A4278A4F74002D2591 /* Assets.xcassets in Resources */,
 				D6A2F44E278FBAAC0040258E /* UsersTableViewCell.xib in Resources */,
 				D6F9A8A2278A4F71002D2591 /* Main.storyboard in Resources */,
@@ -421,6 +436,7 @@
 				D61B8B05278E087600CFABEE /* URL.swift in Sources */,
 				D61B8AF5278E05F400CFABEE /* Network.swift in Sources */,
 				D6F9A89D278A4F71002D2591 /* SceneDelegate.swift in Sources */,
+				07EE7F6927AF7F0B0003AE8D /* ReporteViewController.swift in Sources */,
 				D61B8B00278E073B00CFABEE /* Estructuras.swift in Sources */,
 				D6A2F44D278FBAAC0040258E /* UsersTableViewCell.swift in Sources */,
 				0733925C27AB05AC000E60F6 /* xtensions.swift in Sources */,
