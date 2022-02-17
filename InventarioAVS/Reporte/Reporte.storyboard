@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Reporte View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="ReporteViewController" customModule="InventarioAVS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reportes" id="Y6W-OH-hqX" customClass="ReporteViewController" customModule="InventarioAVS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,20 +45,50 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L2K-kw-tWB">
+                                <rect key="frame" x="0.0" y="188.5" width="414" height="707.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="NsX-nL-6w1">
+                                <rect key="frame" x="0.0" y="124.5" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="dG1-E1-m0p"/>
+                                </constraints>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.074509803920000006" green="0.070588235289999995" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.074509803920000006" green="0.08235294118" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NQQ-4D-ftM" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="4AG-Vt-mAx"/>
+                            <constraint firstItem="NsX-nL-6w1" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Peu-8a-tNt"/>
                             <constraint firstItem="NQQ-4D-ftM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="RUs-1f-FD7"/>
+                            <constraint firstItem="L2K-kw-tWB" firstAttribute="top" secondItem="NsX-nL-6w1" secondAttribute="bottom" constant="20" id="dSB-tj-Xly"/>
+                            <constraint firstItem="NsX-nL-6w1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eLA-5s-NMu"/>
+                            <constraint firstAttribute="bottom" secondItem="L2K-kw-tWB" secondAttribute="bottom" id="gRD-1f-6b8"/>
+                            <constraint firstItem="L2K-kw-tWB" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="heS-Zc-AMK"/>
+                            <constraint firstItem="NsX-nL-6w1" firstAttribute="top" secondItem="Tnd-ej-OLa" secondAttribute="bottom" constant="20" id="m4a-3T-98A"/>
                             <constraint firstItem="Tnd-ej-OLa" firstAttribute="top" secondItem="NQQ-4D-ftM" secondAttribute="bottom" constant="5" id="rSh-j4-MBp"/>
+                            <constraint firstItem="L2K-kw-tWB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="rsf-Ve-kGd"/>
                             <constraint firstItem="Tnd-ej-OLa" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="wgi-hN-383"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="search" destination="NsX-nL-6w1" id="YNl-3u-1QE"/>
+                        <outlet property="tableReportes" destination="L2K-kw-tWB" id="JSd-31-NNc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-23" y="75"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

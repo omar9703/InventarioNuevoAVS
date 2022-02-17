@@ -12,6 +12,8 @@
 		07EE7F5F27AF68A40003AE8D /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EE7F5E27AF68A40003AE8D /* PerfilViewController.swift */; };
 		07EE7F6627AF7EF90003AE8D /* Reporte.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */; };
 		07EE7F6927AF7F0B0003AE8D /* ReporteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */; };
+		D606AB9B27BD939D00AEC2EB /* Levantar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D606AB9A27BD939D00AEC2EB /* Levantar.storyboard */; };
+		D606AB9E27BD93D900AEC2EB /* LevantarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606AB9D27BD93D900AEC2EB /* LevantarViewController.swift */; };
 		D6139F6427912AD000EB8C5F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6139F6227912AD000EB8C5F /* DetailViewController.swift */; };
 		D6139F6527912AD000EB8C5F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6139F6327912AD000EB8C5F /* DetailViewController.xib */; };
 		D61B8AF5278E05F400CFABEE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B8AF4278E05F400CFABEE /* Network.swift */; };
@@ -54,6 +56,8 @@
 		07EE7F5E27AF68A40003AE8D /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reporte.storyboard; sourceTree = "<group>"; };
 		07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReporteViewController.swift; sourceTree = "<group>"; };
+		D606AB9A27BD939D00AEC2EB /* Levantar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Levantar.storyboard; sourceTree = "<group>"; };
+		D606AB9D27BD93D900AEC2EB /* LevantarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevantarViewController.swift; sourceTree = "<group>"; };
 		D6139F6227912AD000EB8C5F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D6139F6327912AD000EB8C5F /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		D61B8AF4278E05F400CFABEE /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -127,6 +131,15 @@
 				07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */,
 			);
 			path = Reporte;
+			sourceTree = "<group>";
+		};
+		D606AB9927BD938900AEC2EB /* LevantarReportes */ = {
+			isa = PBXGroup;
+			children = (
+				D606AB9A27BD939D00AEC2EB /* Levantar.storyboard */,
+				D606AB9D27BD93D900AEC2EB /* LevantarViewController.swift */,
+			);
+			path = LevantarReportes;
 			sourceTree = "<group>";
 		};
 		D6139F6127912AB800EB8C5F /* Detail */ = {
@@ -314,6 +327,7 @@
 		D6F9A899278A4F71002D2591 /* InventarioAVS */ = {
 			isa = PBXGroup;
 			children = (
+				D606AB9927BD938900AEC2EB /* LevantarReportes */,
 				07EE7F6027AF7EC30003AE8D /* Reporte */,
 				07EE7F5B27AF68520003AE8D /* Perfil */,
 				D69273CA27A1C0890079B253 /* Menu */,
@@ -407,6 +421,7 @@
 				D6F9A8A2278A4F71002D2591 /* Main.storyboard in Resources */,
 				D69273EA27A20B080079B253 /* UserDetailViewController.xib in Resources */,
 				D69273E327A1FD460079B253 /* ProductDetailTableViewCell.xib in Resources */,
+				D606AB9B27BD939D00AEC2EB /* Levantar.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +443,7 @@
 				D698BCAC278FAE7100FB81D1 /* UsuariosViewController.swift in Sources */,
 				D6A2F454278FC1E70040258E /* QrReaderViewController.swift in Sources */,
 				D69273CF27A1C0E70079B253 /* MenuViewController.swift in Sources */,
+				D606AB9E27BD93D900AEC2EB /* LevantarViewController.swift in Sources */,
 				D61C39542793A86000FE42A1 /* HistorialViewController.swift in Sources */,
 				D69273E227A1FD460079B253 /* ProductDetailTableViewCell.swift in Sources */,
 				D61B8B12278E162700CFABEE /* FilterViewController.swift in Sources */,
@@ -589,6 +605,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 39CZ85C65X;
 				INFOPLIST_FILE = InventarioAVS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,6 +625,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 39CZ85C65X;
 				INFOPLIST_FILE = InventarioAVS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
