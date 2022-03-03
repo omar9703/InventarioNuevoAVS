@@ -23,7 +23,6 @@ func requestPetition<T : Decodable>(ofType type:T.Type,typeRequest : typeRequest
     switch typeRequest {
     case .POST:
         requestParams.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        requestParams.setValue("bearer \(Bearer)", forHTTPHeaderField: "Authorization")
         requestParams.httpMethod = typeRequest.rawValue
         break
     case .GET:
