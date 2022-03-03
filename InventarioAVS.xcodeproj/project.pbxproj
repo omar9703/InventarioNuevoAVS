@@ -13,6 +13,8 @@
 		07EE7F6627AF7EF90003AE8D /* Reporte.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */; };
 		07EE7F6927AF7F0B0003AE8D /* ReporteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */; };
 		102B89EE27C5ED1000744853 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 102B89EC27C5ED1000744853 /* User.xcdatamodeld */; };
+		10F08A8727D1364E0009B6F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F08A8627D1364E0009B6F4 /* User.swift */; };
+		10F08A8A27D13E750009B6F4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F08A8927D13E750009B6F4 /* LoadingView.swift */; };
 		D606AB9B27BD939D00AEC2EB /* Levantar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D606AB9A27BD939D00AEC2EB /* Levantar.storyboard */; };
 		D606AB9E27BD93D900AEC2EB /* LevantarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606AB9D27BD93D900AEC2EB /* LevantarViewController.swift */; };
 		D6139F6427912AD000EB8C5F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6139F6227912AD000EB8C5F /* DetailViewController.swift */; };
@@ -58,6 +60,8 @@
 		07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reporte.storyboard; sourceTree = "<group>"; };
 		07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReporteViewController.swift; sourceTree = "<group>"; };
 		102B89ED27C5ED1000744853 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
+		10F08A8627D1364E0009B6F4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		10F08A8927D13E750009B6F4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D606AB9A27BD939D00AEC2EB /* Levantar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Levantar.storyboard; sourceTree = "<group>"; };
 		D606AB9D27BD93D900AEC2EB /* LevantarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevantarViewController.swift; sourceTree = "<group>"; };
 		D6139F6227912AD000EB8C5F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,22 @@
 				07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */,
 			);
 			path = Reporte;
+			sourceTree = "<group>";
+		};
+		10F08A8527D135EF0009B6F4 /* Representations */ = {
+			isa = PBXGroup;
+			children = (
+				10F08A8627D1364E0009B6F4 /* User.swift */,
+			);
+			path = Representations;
+			sourceTree = "<group>";
+		};
+		10F08A8827D13E0D0009B6F4 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				10F08A8927D13E750009B6F4 /* LoadingView.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		D606AB9927BD938900AEC2EB /* LevantarReportes */ = {
@@ -329,6 +349,8 @@
 		D6F9A899278A4F71002D2591 /* InventarioAVS */ = {
 			isa = PBXGroup;
 			children = (
+				10F08A8827D13E0D0009B6F4 /* Loading */,
+				10F08A8527D135EF0009B6F4 /* Representations */,
 				D606AB9927BD938900AEC2EB /* LevantarReportes */,
 				07EE7F6027AF7EC30003AE8D /* Reporte */,
 				07EE7F5B27AF68520003AE8D /* Perfil */,
@@ -435,6 +457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10F08A8727D1364E0009B6F4 /* User.swift in Sources */,
 				D6139F6427912AD000EB8C5F /* DetailViewController.swift in Sources */,
 				D69273D627A1C3AA0079B253 /* MenuItems.swift in Sources */,
 				D6F9A89F278A4F71002D2591 /* ViewController.swift in Sources */,
@@ -442,6 +465,7 @@
 				D69273C227A0BF020079B253 /* LoginViewController.swift in Sources */,
 				D61B8AFB278E070000CFABEE /* Alerts.swift in Sources */,
 				07EE7F5F27AF68A40003AE8D /* PerfilViewController.swift in Sources */,
+				10F08A8A27D13E750009B6F4 /* LoadingView.swift in Sources */,
 				D69273E927A20B080079B253 /* UserDetailViewController.swift in Sources */,
 				D698BCAC278FAE7100FB81D1 /* UsuariosViewController.swift in Sources */,
 				D6A2F454278FC1E70040258E /* QrReaderViewController.swift in Sources */,

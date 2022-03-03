@@ -16,8 +16,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var productsTable: UITableView!
     @IBOutlet weak var filterButton: UIBarButtonItem!
     var deviceDes = true
-    var devices = Devices()
-    var filteredDevices = Devices()
+    var devices = [Device]()
+    var loading : LoadingView?
+    var filteredDevices = [Device]()
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingIndicator.hidesWhenStopped = true
@@ -28,6 +29,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         search.backgroundColor = .clear
         productsTable.backgroundColor = .clear
         hideKeyboardWhenTappedAround()
+        loading = LoadingView()
+        self.view.addSubview(loading!)
         // Do any additional setup after loading the view.
     }
     
@@ -41,22 +44,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
         getData()
     }
     
     func getData()
     {
-        
-        requestPetition(ofType: Devices.self, typeRequest: .GET, url: urlAVSdevice.devices) { (httpcode, dataResponse) in
+        self.loading?.showLoadingView()
+        requestPetition(ofType: DeviceResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos?limit=1&offset=1") { (httpcode, dataResponse) in
             if evaluateResponse(controller: self, httpCode: httpcode)
             {
-                print(dataResponse?.count)
                 self.devices.removeAll()
-                self.devices = dataResponse!
+                self.devices = dataResponse!.data
                 DispatchQueue.main.async {
-                    self.alert.dismiss(animated: true, completion: nil)
+                    self.loading?.hideLoadingView()
                     self.productsTable.reloadData()
                 }
                 
@@ -64,7 +64,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             else
             {
                 DispatchQueue.main.async {
-                    self.alert.dismiss(animated: true, completion: nil)
+                    self.loading?.hideLoadingView()
+
                 }
                 
             }
@@ -144,12 +145,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 break
             case .modelo:
                 filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-                    return item.modelo.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+                    return item.modelo?.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
                 }
                 break
             case .serie:
                 filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-                    return item.serie.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+                    return item.serie?.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
                 }
                 break
                 

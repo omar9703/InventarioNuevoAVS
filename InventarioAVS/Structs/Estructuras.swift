@@ -9,22 +9,42 @@ import Foundation
 
 
 struct Device: Codable {
-    let ID: Int
-    let codigo, producto, marca, fecha: String
-    let modelo, foto, cantidad, observaciones: String
-    let IDlugar: Int
-    let pertenece, descompostura, costo, compra: String
-    let serie, proveedor, lugar, origen: String
+    let id, cantidad, costo: Int
+    let codigo, producto, marca, fechaAlta: String
+    let modelo, foto, observaciones: String?
+    let lugarId: Int
+    let pertenece, descompostura, compra: String?
+    let serie, proveedor, origen: String?
 }
 
-typealias Devices = [Device]
-
-struct User: Codable {
-    let ID: Int
-    let nombre, apellido_paterno, apellido_materno, IDuser: String?
-    let password, tipousuario, fecha, telefono: String?
-    let IDtipoUsuario, statuscode: Int?
-    let correo, rol, message, foto: String?
+struct DeviceResponse : Codable
+{
+    let app_code : String
+    let data : [Device]
+}
+struct UserRespose: Codable {
+    let app_code : String
+    let data : [loginUser]
 }
 
-typealias Users = [User]
+struct loginUser : Codable
+{
+    let apellidoMaterno : String
+    let apellidoPaterno : String
+    let correo : String
+    let fechaAlta : String
+    let fechaUltimaModificacion : String
+    let foto : String
+    let id : Int
+    let nombre : String
+    let rolId : Int
+    let telefono : String
+    let username : String
+    let rol : Rol
+}
+struct Rol : Codable
+{
+    let id : Int
+    let nombre : String
+}
+

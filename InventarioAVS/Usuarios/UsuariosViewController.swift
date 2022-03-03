@@ -10,22 +10,29 @@ import UIKit
 class UsuariosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     var userdes = true
     @IBOutlet weak var tableUsers: UITableView!
-    var usuarios = Users()
-    var usuariosFiltered = Users()
+    var usuarios = [loginUser]()
+    var loading : LoadingView?
+    var usuariosFiltered = [loginUser]()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableUsers.register(UINib(nibName: "UsersTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        loading = LoadingView()
+        self.view.addSubview(loading!)
         getData()
         hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     func getData()
     {
-        requestPetition(ofType: Users.self, typeRequest: .GET, url: urlAVSuser.users) { (httpCode, data) in
+        self.loading?.showLoadingView()
+        requestPetition(ofType: UserRespose.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/usuarios") { (httpCode, data) in
+            DispatchQueue.main.async {
+                self.loading?.hideLoadingView()
+            }
             if evaluateResponse(controller: self, httpCode: httpCode)
             {
                 
-                    self.usuarios = data!
+                self.usuarios = data!.data
                     DispatchQueue.main.async {
                         self.tableUsers.reloadData()
                     }
@@ -37,8 +44,8 @@ class UsuariosViewController: UIViewController, UITableViewDelegate, UITableView
         userdes = false
         if searchText != ""
         {
-            usuariosFiltered = searchText.isEmpty ? usuarios : usuarios.filter{(item: User) ->Bool in
-                return (item.nombre! + " " + item.apellido_paterno!).lowercased().range(of: searchText.lowercased(), options: .caseInsensitive, range: nil,locale: nil) != nil
+            usuariosFiltered = searchText.isEmpty ? usuarios : usuarios.filter{(item: loginUser) ->Bool in
+                return (item.nombre + " " + item.apellidoPaterno).lowercased().range(of: searchText.lowercased(), options: .caseInsensitive, range: nil,locale: nil) != nil
             }
         }
         else
@@ -76,14 +83,14 @@ class UsuariosViewController: UIViewController, UITableViewDelegate, UITableView
         if userdes
         {
         
-        cell.nombre.text = usuarios[indexPath.row].nombre! + " \(usuarios[indexPath.row].apellido_paterno!)"
-        cell.tipoUsuario.text = usuarios[indexPath.row].rol!
+            cell.nombre.text = usuarios[indexPath.row].nombre + " \(usuarios[indexPath.row].apellidoPaterno)"
+            cell.tipoUsuario.text = usuarios[indexPath.row].rol.nombre
         
         }
         else
         {
-            cell.nombre.text = usuariosFiltered[indexPath.row].nombre! + " \(usuariosFiltered[indexPath.row].apellido_paterno!)"
-            cell.tipoUsuario.text = usuariosFiltered[indexPath.row].rol!
+            cell.nombre.text = usuariosFiltered[indexPath.row].nombre + " \(usuariosFiltered[indexPath.row].apellidoPaterno)"
+            cell.tipoUsuario.text = usuariosFiltered[indexPath.row].rol.nombre
             
         }
         cell.backgroundColor = .clear

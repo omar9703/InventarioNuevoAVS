@@ -42,13 +42,13 @@ func requestPetition<T : Decodable>(ofType type:T.Type,typeRequest : typeRequest
             httpResponseCode = httpResponse.statusCode
             debugPrint(httpResponse.statusCode)
         }
-//        print(String(data: data ?? Data(), encoding: .utf8)!)
+       print(String(data: data ?? Data(), encoding: .utf8)!)
         let decoder = JSONDecoder()
         do {
             let dataResponse = try decoder.decode(type, from: data ?? Data())
             dataReturn = dataResponse
             debugPrint(":::::::::::::::::_____::::::::::::::")
-//            debugPrint(dataResponse)
+            debugPrint(dataResponse)
             debugPrint(":::::::::::::::::_____::::::::::::::")
         } catch {
             print(error.localizedDescription)

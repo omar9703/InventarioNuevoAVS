@@ -22,6 +22,15 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         setNavigationBar()
     }
     
+    override func willMove(toParent parent: UIViewController?)
+    {
+        super.willMove(toParent: parent)
+        if parent == nil
+        {
+            UsuarioData.deleteUser()
+        }
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if items.count % 2 == 0
         {

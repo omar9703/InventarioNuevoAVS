@@ -8,7 +8,7 @@
 import UIKit
 
 class UserDetailViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
-    var device : User? = nil
+    var device : loginUser? = nil
     
     @IBOutlet weak var tableDetail: UITableView!
     override func viewDidLoad() {
@@ -31,17 +31,17 @@ class UserDetailViewController: UIViewController,UITableViewDelegate, UITableVie
         if indexPath.row == 0
         {
             cell.titulo.text = "Nombre"
-            cell.descripcion.text = device?.nombre ?? "" + " \(device?.apellido_paterno) \(device?.apellido_materno) "
+            cell.descripcion.text = device?.nombre ?? "" + " \(device?.apellidoPaterno) \(device?.apellidoMaterno) "
         }
         else if indexPath.row == 1
         {
             cell.titulo.text = "Tipo de usuario"
-            cell.descripcion.text = device?.rol
+            cell.descripcion.text = device?.rol.nombre
         }
         else if indexPath.row == 2
         {
             cell.titulo.text = "Fecha de ingreso"
-            cell.descripcion.text = device?.fecha
+            cell.descripcion.text = device?.fechaAlta
         }
         else if indexPath.row == 3
         {

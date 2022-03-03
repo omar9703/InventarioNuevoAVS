@@ -10,13 +10,24 @@ import UIKit
 class PerfilViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    var titulos = ["Nombre", "Telefono", "Correo", "Puesto","Fecha"]
+    var titulos = ["Nombre", "Apellido Paterno", "Apellido Materno", "Correo","Telefono"]
+    var descripcion = [String]()
     @IBOutlet weak var tablauser: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tablauser.register(UINib(nibName: "ProductDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tablauser.backgroundColor = .clear
-        tablauser.reloadData()
+        if let usuario = UsuarioData.GetUser()
+        {
+            descripcion.append(usuario.nombre)
+            descripcion.append(usuario.apellidoPaterno)
+            descripcion.append(usuario.apellidoMaterno)
+            descripcion.append(usuario.correo)
+            descripcion.append(usuario.telefono)
+            tablauser.reloadData()
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,7 +37,11 @@ class PerfilViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductDetailTableViewCell
         cell.titulo.text = titulos[indexPath.row]
-        
+        cell.descripcion.textColor = .white
+        if descripcion.count > 0
+        {
+            cell.descripcion.text = descripcion[indexPath.row]
+        }
         cell.titulo.textColor = .white
         cell.backgroundColor = .clear
         return cell

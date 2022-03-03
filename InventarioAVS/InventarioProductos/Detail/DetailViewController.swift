@@ -55,7 +55,7 @@ class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDat
         else if indexPath.row == 5
         {
             cell.titulo.text = "Lugar actual"
-            cell.descripcion.text = device?.lugar
+            cell.descripcion.text = device?.descompostura
         }
         else if indexPath.row == 6
         {
@@ -70,7 +70,7 @@ class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDat
         else if indexPath.row == 8
         {
             cell.titulo.text = "Costo"
-            cell.descripcion.text = device?.costo
+            cell.descripcion.text = String(device?.costo ?? 0)
         }
         else if indexPath.row == 9
         {
@@ -85,7 +85,7 @@ class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDat
         else if indexPath.row == 11
         {
             cell.titulo.text = "Fecha"
-            cell.descripcion.text = device?.fecha
+            cell.descripcion.text = device?.fechaAlta
         }
         return cell
     }
