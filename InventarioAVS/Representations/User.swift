@@ -22,19 +22,31 @@ class UsuarioData {
           appDelegate.persistentContainer.viewContext
         
         // 2
-        let entity =
-          NSEntityDescription.entity(forEntityName: "Usuario",
-                                     in: managedContext)!
+//        let entity =
+//          NSEntityDescription.entity(forEntityName: "Usuario",
+//                                     in: managedContext)!
+//
+//        let person = NSManagedObject(entity: entity,
+//                                     insertInto: managedContext)
+//
+//        // 3
+//          person.setValue(user.nombre, forKeyPath: "nombre")
+//          person.setValue(user.apellidoMaterno, forKey: "apellidoMaterno")
+//        person.setValue(user.apellidoPaterno, forKey: "apellidoPaterno")
+//        person.setValue(user.telefono, forKey: "telefono")
+//        person.setValue(user.correo, forKey: "correo")
+//        person.setValue(user.rol, forKey: "rol")
         
-        let person = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
+        let us = Usuario(context: managedContext)
+        us.nombre = user.nombre
+        us.apellidoPaterno = user.apellidoPaterno
+        us.apellidoMaterno = user.apellidoMaterno
+        us.telefono = user.telefono
+        us.correo = user.correo
+        us.idRol = Float(user.rol.id)
+        us.nombreRol = user.rol.nombre
         
-        // 3
-          person.setValue(user.nombre, forKeyPath: "nombre")
-          person.setValue(user.apellidoMaterno, forKey: "apellidoMaterno")
-        person.setValue(user.apellidoPaterno, forKey: "apellidoPaterno")
-        person.setValue(user.telefono, forKey: "telefono")
-        person.setValue(user.correo, forKey: "correo")
+      
         print(user)
         
         // 4
@@ -64,7 +76,9 @@ class UsuarioData {
               let usuario = try managedContext.fetch(fetchRequest).last
               if let usuario = usuario
               {
-                  let userd = loginUser(apellidoMaterno: usuario.value(forKey: "apellidoMaterno") as! String, apellidoPaterno: usuario.value(forKey: "apellidoPaterno") as! String, correo: usuario.value(forKey: "correo") as! String, fechaAlta: "", fechaUltimaModificacion: "", foto: "", id: 0, nombre: usuario.value(forKey: "nombre") as! String, rolId: 0, telefono: usuario.value(forKey: "telefono") as! String, username: "", rol: Rol(id: 1, nombre: "Administrador"))
+                  print(usuario)
+                  
+                  let userd = loginUser(apellidoMaterno: usuario.value(forKey: "apellidoMaterno") as! String, apellidoPaterno: usuario.value(forKey: "apellidoPaterno") as! String, correo: usuario.value(forKey: "correo") as! String, fechaAlta: "", fechaUltimaModificacion: "", foto: "", id: 0, nombre: usuario.value(forKey: "nombre") as! String, rolId: 0, telefono: usuario.value(forKey: "telefono") as! String, username: "", rol: RolUser(id: usuario.value(forKey: "idRol") as! Int, nombre: usuario.value(forKey: "nombreRol") as! String) )
                   return userd
               }
               else

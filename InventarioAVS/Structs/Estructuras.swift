@@ -40,9 +40,9 @@ struct loginUser : Codable
     let rolId : Int
     let telefono : String
     let username : String
-    let rol : Rol
+    let rol : RolUser
 }
-struct Rol : Codable
+struct RolUser : Codable
 {
     let id : Int
     let nombre : String

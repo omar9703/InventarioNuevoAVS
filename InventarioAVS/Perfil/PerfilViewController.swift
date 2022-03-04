@@ -19,6 +19,7 @@ class PerfilViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tablauser.backgroundColor = .clear
         if let usuario = UsuarioData.GetUser()
         {
+           
             descripcion.append(usuario.nombre)
             descripcion.append(usuario.apellidoPaterno)
             descripcion.append(usuario.apellidoMaterno)
