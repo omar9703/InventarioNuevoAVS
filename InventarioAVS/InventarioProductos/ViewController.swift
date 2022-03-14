@@ -31,6 +31,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         hideKeyboardWhenTappedAround()
         loading = LoadingView()
         self.view.addSubview(loading!)
+        getData()
         // Do any additional setup after loading the view.
     }
     
@@ -44,13 +45,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getData()
+        
     }
     
     func getData()
     {
         self.loading?.showLoadingView()
-        requestPetition(ofType: DeviceResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos?limit=1&offset=1") { (httpcode, dataResponse) in
+        requestPetition(ofType: DeviceResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos") { (httpcode, dataResponse) in
             if evaluateResponse(controller: self, httpCode: httpcode)
             {
                 self.devices.removeAll()

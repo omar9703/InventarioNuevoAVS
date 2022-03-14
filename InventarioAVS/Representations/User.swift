@@ -43,6 +43,7 @@ class UsuarioData {
         us.apellidoMaterno = user.apellidoMaterno
         us.telefono = user.telefono
         us.correo = user.correo
+        us.idUser = Float(user.id)
         us.idRol = Float(user.rol.id)
         us.nombreRol = user.rol.nombre
         
@@ -56,6 +57,38 @@ class UsuarioData {
           print("Could not save. \(error), \(error.userInfo)")
         }
         
+    }
+    public static func GetUserId() -> Int?
+    {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+              return nil
+          }
+          
+          let managedContext =
+            appDelegate.persistentContainer.viewContext
+          
+          //2
+          let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Usuario")
+          
+          //3
+          do {
+              let usuario = try managedContext.fetch(fetchRequest).last
+              if let usuario = usuario
+              {
+                  print(usuario)
+                  
+                  return Int(usuario.value(forKey: "idUser") as? Float ?? -1)
+              }
+              else
+              {
+                  return nil
+              }
+          } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+              return nil
+          }
     }
     public static func GetUser() -> loginUser?
     {

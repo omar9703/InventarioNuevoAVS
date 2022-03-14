@@ -51,7 +51,7 @@ extension UIViewController{
             break
         case .successfullRegistration:
             messageAlert.titleAlert = "¡Registro exitoso!"
-            messageAlert.message = "Revisa tu correo electrónico para activar tu cuenta. Asegúrate de revisar el buzón de spam."
+            messageAlert.message = "Tu reporte a ha sido registrado exitosamente"
             messageAlert.buttonTitle = "Cerrar"
             break
         case .genericAlert:

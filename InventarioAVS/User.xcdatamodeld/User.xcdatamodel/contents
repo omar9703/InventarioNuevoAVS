@@ -5,11 +5,12 @@
         <attribute name="apellidoPaterno" optional="YES" attributeType="String"/>
         <attribute name="correo" optional="YES" attributeType="String"/>
         <attribute name="idRol" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="idUser" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="nombre" optional="YES" attributeType="String"/>
         <attribute name="nombreRol" optional="YES" attributeType="String"/>
         <attribute name="telefono" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Usuario" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Usuario" positionX="-63" positionY="-18" width="128" height="149"/>
     </elements>
 </model>
