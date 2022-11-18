@@ -9,6 +9,7 @@ import UIKit
 
 class ProductoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lugar: UILabel!
     @IBOutlet weak var modelo: UILabel!
     @IBOutlet weak var nombre: UILabel!
     @IBOutlet weak var marca: UILabel!

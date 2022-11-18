@@ -13,6 +13,8 @@
 		07EE7F6627AF7EF90003AE8D /* Reporte.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */; };
 		07EE7F6927AF7F0B0003AE8D /* ReporteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */; };
 		102B89EE27C5ED1000744853 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 102B89EC27C5ED1000744853 /* User.xcdatamodeld */; };
+		10E80D2328453ECC004D392F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10E80D2228453ECC004D392F /* Settings.storyboard */; };
+		10E80D2528453EE3004D392F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E80D2428453EE3004D392F /* SettingsViewController.swift */; };
 		10F08A8727D1364E0009B6F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F08A8627D1364E0009B6F4 /* User.swift */; };
 		10F08A8A27D13E750009B6F4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F08A8927D13E750009B6F4 /* LoadingView.swift */; };
 		10FFC33527DFC81300BBB1B4 /* DescripcionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FFC33327DFC81300BBB1B4 /* DescripcionTableViewCell.swift */; };
@@ -64,6 +66,8 @@
 		07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reporte.storyboard; sourceTree = "<group>"; };
 		07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReporteViewController.swift; sourceTree = "<group>"; };
 		102B89ED27C5ED1000744853 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
+		10E80D2228453ECC004D392F /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		10E80D2428453EE3004D392F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		10F08A8627D1364E0009B6F4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		10F08A8927D13E750009B6F4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		10FFC33327DFC81300BBB1B4 /* DescripcionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescripcionTableViewCell.swift; sourceTree = "<group>"; };
@@ -145,6 +149,15 @@
 				07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */,
 			);
 			path = Reporte;
+			sourceTree = "<group>";
+		};
+		10E80D2128453EA3004D392F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				10E80D2228453ECC004D392F /* Settings.storyboard */,
+				10E80D2428453EE3004D392F /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		10F08A8527D135EF0009B6F4 /* Representations */ = {
@@ -369,6 +382,7 @@
 		D6F9A899278A4F71002D2591 /* InventarioAVS */ = {
 			isa = PBXGroup;
 			children = (
+				10E80D2128453EA3004D392F /* Settings */,
 				10F08A8827D13E0D0009B6F4 /* Loading */,
 				10F08A8527D135EF0009B6F4 /* Representations */,
 				D606AB9927BD938900AEC2EB /* LevantarReportes */,
@@ -469,6 +483,7 @@
 				D69273EA27A20B080079B253 /* UserDetailViewController.xib in Resources */,
 				D69273E327A1FD460079B253 /* ProductDetailTableViewCell.xib in Resources */,
 				D606AB9B27BD939D00AEC2EB /* Levantar.storyboard in Resources */,
+				10E80D2328453ECC004D392F /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +517,7 @@
 				D61B8B05278E087600CFABEE /* URL.swift in Sources */,
 				D61B8AF5278E05F400CFABEE /* Network.swift in Sources */,
 				D6F9A89D278A4F71002D2591 /* SceneDelegate.swift in Sources */,
+				10E80D2528453EE3004D392F /* SettingsViewController.swift in Sources */,
 				10FFC33927DFC8E900BBB1B4 /* ImagenTableViewCell.swift in Sources */,
 				07EE7F6927AF7F0B0003AE8D /* ReporteViewController.swift in Sources */,
 				D61B8B00278E073B00CFABEE /* Estructuras.swift in Sources */,

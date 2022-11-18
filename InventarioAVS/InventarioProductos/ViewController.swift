@@ -51,7 +51,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func getData()
     {
         self.loading?.showLoadingView()
-        requestPetition(ofType: DeviceResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos") { (httpcode, dataResponse) in
+        requestPetition(ofType: DeviceResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos?limit=3000") { (httpcode, dataResponse) in
             if evaluateResponse(controller: self, httpCode: httpcode)
             {
                 self.devices.removeAll()
@@ -97,18 +97,21 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             cell.marca.text = filteredDevices[indexPath.row].marca
             cell.modelo.text = filteredDevices[indexPath.row].modelo
             cell.nombre.text = filteredDevices[indexPath.row].producto
+            cell.lugar.text = filteredDevices[indexPath.row].lugar.lugar
         }
         else
         {
             cell.marca.text = devices[indexPath.row].marca
             cell.modelo.text = devices[indexPath.row].modelo
             cell.nombre.text = devices[indexPath.row].producto
+            cell.lugar.text = devices[indexPath.row].lugar.lugar
             
         }
         cell.backgroundColor = .clear
         cell.marca.textColor = .white
         cell.modelo.textColor = .white
         cell.nombre.textColor = .white
+        cell.lugar.textColor = .white
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -122,6 +125,46 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             vc.device = devices[indexPath.row]
         }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        
+        let label = UILabel()
+        label.frame = CGRect.init(x: 10, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label.text = "Nombre"
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .red
+        headerView.addSubview(label)
+        
+        let label2 = UILabel()
+        label2.frame = CGRect(x: CGFloat(Int(tableView.frame.width / 2) - 75), y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label2.text = "Marca"
+        label2.font = .systemFont(ofSize: 16)
+        label2.textColor = .red
+        headerView.addSubview(label2)
+        
+        let label3 = UILabel()
+        label3.frame = CGRect(x: CGFloat(Int(tableView.frame.width / 2) + 25), y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label3.text = "Modelo"
+        label3.font = .systemFont(ofSize: 16)
+        label3.textColor = .red
+        headerView.addSubview(label3)
+        
+        let label4 = UILabel()
+        label4.frame = CGRect(x: CGFloat(Int(tableView.frame.width) - 70), y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label4.text = "Lugar"
+        label4.font = .systemFont(ofSize: 16)
+        label4.textColor = .red
+        headerView.addSubview(label4)
+        
+        
+        headerView.backgroundColor = UIColor(red: 19/255, green: 18/255, blue: 79/255, alpha: 1)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

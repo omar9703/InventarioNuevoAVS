@@ -13,7 +13,7 @@ class MenuItems {
         MenuItem(nombre: "historial", tipoUsuario: 5, imagen: "HISTORIAL", route: "reportes",storyboard: "Reporte"),
         MenuItem(nombre: "empleados", tipoUsuario: 5, imagen: "EMPLEADOS", route: "users",storyboard: "users"),
         MenuItem(nombre: "reporte", tipoUsuario: 5, imagen: "REPORTE",route: "levantar",storyboard: "Levantar"),
-        MenuItem(nombre: "settings", tipoUsuario: 5, imagen: "ajustes",route: "",storyboard: "")]
+        MenuItem(nombre: "settings", tipoUsuario: 5, imagen: "ajustes",route: "settings",storyboard: "Settings")]
 }
 
 struct MenuItem {
