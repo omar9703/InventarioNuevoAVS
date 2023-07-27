@@ -186,35 +186,45 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
         
+        let hStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        hStackView.alignment = .center
+        hStackView.distribution = .fillEqually
+        hStackView.spacing = 2
+        hStackView.axis = .horizontal
+        
         let label = UILabel()
-        label.frame = CGRect.init(x: 10, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label.frame = CGRect.init(x: 0, y: 5, width: 100, height: headerView.frame.height-10)
         label.text = "Nombre"
         label.font = .systemFont(ofSize: 16)
         label.textColor = .red
-        headerView.addSubview(label)
+        label.textAlignment = .center
+        hStackView.addArrangedSubview(label)
         
         let label2 = UILabel()
-        label2.frame = CGRect(x: CGFloat(Int(tableView.frame.width / 2) - 75), y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label2.frame = CGRect(x: 0, y: 5, width: 100, height: headerView.frame.height-10)
         label2.text = "Marca"
         label2.font = .systemFont(ofSize: 16)
         label2.textColor = .red
-        headerView.addSubview(label2)
+        label2.textAlignment = .center
+        hStackView.addArrangedSubview(label2)
         
         let label3 = UILabel()
-        label3.frame = CGRect(x: CGFloat(Int(tableView.frame.width / 2) + 25), y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label3.frame = CGRect(x: 0, y: 5, width: 100, height: headerView.frame.height-10)
         label3.text = "Modelo"
         label3.font = .systemFont(ofSize: 16)
         label3.textColor = .red
-        headerView.addSubview(label3)
+        label3.textAlignment = .center
+        hStackView.addArrangedSubview(label3)
         
         let label4 = UILabel()
-        label4.frame = CGRect(x: CGFloat(Int(tableView.frame.width) - 70), y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label4.frame = CGRect(x: 0, y: 5, width: 100, height: headerView.frame.height-10)
         label4.text = "Lugar"
         label4.font = .systemFont(ofSize: 16)
         label4.textColor = .red
-        headerView.addSubview(label4)
+        label4.textAlignment = .center
+        hStackView.addArrangedSubview(label4)
         
-        
+        headerView.addSubview(hStackView)
         headerView.backgroundColor = UIColor(red: 19/255, green: 18/255, blue: 79/255, alpha: 1)
         return headerView
     }
