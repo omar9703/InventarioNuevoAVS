@@ -9,6 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var device : Device? = nil
+    var device2 : products? = nil
     @IBOutlet weak var tableDetail: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,22 +31,22 @@ class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDat
         if indexPath.row == 0
         {
             cell.titulo.text = "Nombre"
-            cell.descripcion.text = device?.producto
+            cell.descripcion.text = device?.producto ?? device2?.producto
         }
         else if indexPath.row == 1
         {
             cell.titulo.text = "Marca"
-            cell.descripcion.text = device?.marca
+            cell.descripcion.text = device?.marca ?? device2?.marca
         }
         else if indexPath.row == 2
         {
             cell.titulo.text = "Modelo"
-            cell.descripcion.text = device?.modelo
+            cell.descripcion.text = device?.modelo ?? device2?.modelo
         }
         else if indexPath.row == 3
         {
             cell.titulo.text = "Codigo"
-            cell.descripcion.text = device?.codigo
+            cell.descripcion.text = device?.codigo ?? device2?.codigo
         }
         else if indexPath.row == 4
         {
@@ -55,7 +56,7 @@ class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDat
         else if indexPath.row == 5
         {
             cell.titulo.text = "Lugar actual"
-            cell.descripcion.text = device?.descompostura
+            cell.descripcion.text = device?.descompostura ?? device2?.lugar
         }
         else if indexPath.row == 6
         {

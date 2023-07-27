@@ -14,7 +14,7 @@ enum typeRequest : String {
     case DELETE
 }
 
-func requestPetition<T : Decodable>(ofType type:T.Type,typeRequest : typeRequest, url : String, parameters : [String:Any] = [String:Any](),completion: @escaping (Int, T?)->Void){
+func requestPetition<T : Decodable>(ofType type:T.Type,typeRequest : typeRequest, url : String, parameters : [String:Any] = [String:Any](),header : String = "",completion: @escaping (Int, T?)->Void){
     var dataReturn : T?
     var requestParams = URLRequest(url: URL(string: url)!)
     var Bearer : String = ""
@@ -27,6 +27,10 @@ func requestPetition<T : Decodable>(ofType type:T.Type,typeRequest : typeRequest
         break
     case .GET:
         requestParams.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if header != ""
+        {
+            requestParams.setValue(header, forHTTPHeaderField: "value")
+        }
         break
     case .DELETE:
         requestParams.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -42,16 +46,16 @@ func requestPetition<T : Decodable>(ofType type:T.Type,typeRequest : typeRequest
             httpResponseCode = httpResponse.statusCode
             debugPrint(httpResponse.statusCode)
         }
-       print(String(data: data ?? Data(), encoding: .utf8)!)
+//       print(String(data: data ?? Data(), encoding: .utf8)!)
         let decoder = JSONDecoder()
         do {
             let dataResponse = try decoder.decode(type, from: data ?? Data())
             dataReturn = dataResponse
             debugPrint(":::::::::::::::::_____::::::::::::::")
-            debugPrint(dataResponse)
+            debugPrint(url)
             debugPrint(":::::::::::::::::_____::::::::::::::")
         } catch {
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
         }
         completion(httpResponseCode,dataReturn)
     }

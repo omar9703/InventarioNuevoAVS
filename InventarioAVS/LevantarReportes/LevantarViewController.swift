@@ -208,7 +208,7 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
         if searchText != ""
         {
             filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-                return item.codigo.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+                return item.codigo?.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
             }
         }
         else

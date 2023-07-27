@@ -18,20 +18,25 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var deviceDes = true
     var devices = [Device]()
     var loading : LoadingView?
-    var filteredDevices = [Device]()
+    var cargandoFilter = false
+    var searchtext = ""
+    var filteredDevices = [products]()
+    var cargando = false
+    var off = 0
+    var offFilter = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         productsTable.register(UINib(nibName: "ProductoTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        qrButton.isEnabled = false
+        qrButton.isEnabled = true
         search.backgroundColor = .clear
         productsTable.backgroundColor = .clear
         hideKeyboardWhenTappedAround()
         loading = LoadingView()
         self.view.addSubview(loading!)
-        getData()
+        getData(offset: off)
         // Do any additional setup after loading the view.
     }
     
@@ -48,27 +53,78 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
-    func getData()
+    func getData(offset : Int)
     {
-        self.loading?.showLoadingView()
-        requestPetition(ofType: DeviceResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos?limit=3000") { (httpcode, dataResponse) in
-            if evaluateResponse(controller: self, httpCode: httpcode)
-            {
-                self.devices.removeAll()
-                self.devices = dataResponse!.data
-                DispatchQueue.main.async {
-                    self.loading?.hideLoadingView()
-                    self.productsTable.reloadData()
+        debugPrint(cargando)
+        if !cargando
+        {
+            cargando = true
+            off+=1
+            self.loading?.showLoadingView()
+            requestPetition(ofType: DeviceResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos?limit=50&offset=\(off)") { (httpcode, dataResponse) in
+                self.cargando.toggle()
+                if evaluateResponse(controller: self, httpCode: httpcode)
+                {
+                    
+                    for x in dataResponse!.data
+                    {
+                        self.devices.append(x)
+                    }
+                    DispatchQueue.main.async {
+                        self.loading?.hideLoadingView()
+                        self.productsTable.reloadData()
+                    }
+                    
                 }
-                
+                else
+                {
+                    DispatchQueue.main.async {
+                        self.loading?.hideLoadingView()
+                        
+                    }
+                    
+                }
             }
-            else
-            {
-                DispatchQueue.main.async {
-                    self.loading?.hideLoadingView()
-
+        }
+    }
+    
+    func getfilterData()
+    {
+        if !cargandoFilter
+        {
+            cargandoFilter = true
+            offFilter+=1
+            self.loading?.showLoadingView()
+            requestPetition(ofType: filterResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/filterdeviceFields?limit=30&offset=\(offFilter)",header: searchtext) { (httpcode, dataResponse) in
+                self.cargandoFilter.toggle()
+                if evaluateResponse(controller: self, httpCode: httpcode)
+                {
+                    debugPrint(dataResponse?.data.count)
+                    if dataResponse?.data.count ?? 0 < 30
+                    {
+                        self.cargandoFilter = true
+                    }
+                    else
+                    {
+                        self.cargandoFilter = false
+                    }
+                    for x in dataResponse!.data
+                    {
+                        self.filteredDevices.append(x)
+                    }
+                    DispatchQueue.main.async {
+                        self.loading?.hideLoadingView()
+                        self.productsTable.reloadData()
+                    }
+                    
                 }
-                
+                else
+                {
+                    DispatchQueue.main.async {
+                        self.loading?.hideLoadingView()
+                        self.productsTable.reloadData()
+                    }
+                }
             }
         }
     }
@@ -97,14 +153,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             cell.marca.text = filteredDevices[indexPath.row].marca
             cell.modelo.text = filteredDevices[indexPath.row].modelo
             cell.nombre.text = filteredDevices[indexPath.row].producto
-            cell.lugar.text = filteredDevices[indexPath.row].lugar.lugar
+            cell.lugar.text = filteredDevices[indexPath.row].lugar
         }
         else
         {
             cell.marca.text = devices[indexPath.row].marca
             cell.modelo.text = devices[indexPath.row].modelo
             cell.nombre.text = devices[indexPath.row].producto
-            cell.lugar.text = devices[indexPath.row].lugar.lugar
+            cell.lugar.text = devices[indexPath.row].lugar?.lugar
             
         }
         cell.backgroundColor = .clear
@@ -118,7 +174,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let vc = DetailViewController()
         if !deviceDes
         {
-            vc.device = filteredDevices[indexPath.row]
+            vc.device2 = filteredDevices[indexPath.row]
         }
         else
         {
@@ -168,36 +224,63 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        deviceDes = false
+        
         if searchText != ""
         {
-            switch filtro {
-            case .nombre:
-                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-                    return item.producto.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+            searchtext = searchText
+            deviceDes = false
+//            switch filtro {
+//            case .nombre:
+//                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
+//                    return item.producto.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+//                }
+//                break
+//            case .codigo:
+//                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
+//                    return item.codigo.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+//                }
+//                break
+//            case .marca:
+//                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
+//                    return item.marca.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+//                }
+//                break
+//            case .modelo:
+//                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
+//                    return item.modelo?.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+//                }
+//                break
+//            case .serie:
+//                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
+//                    return item.serie?.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+//                }
+//                break
+//
+//            }
+            self.offFilter = 1
+            requestPetition(ofType: filterResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/filterdeviceFields?limit=30&offset=\(1)",header: searchText) { (httpcode, dataResponse) in
+                if evaluateResponse(controller: self, httpCode: httpcode)
+                {
+                    debugPrint(dataResponse?.data.count)
+                    if dataResponse?.data.count ?? 0 < 30
+                    {
+                        self.cargandoFilter = true
+                    }
+                    else
+                    {
+                        self.cargandoFilter = false
+                    }
+                    self.filteredDevices.removeAll()
+                    self.filteredDevices = dataResponse?.data ?? [products]()
+                    DispatchQueue.main.async {
+                        self.productsTable.reloadData()
+                    }
+                    
                 }
-                break
-            case .codigo:
-                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-                    return item.codigo.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+                else
+                {
+                    
                 }
-                break
-            case .marca:
-                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-                    return item.marca.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
-                }
-                break
-            case .modelo:
-                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-                    return item.modelo?.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
-                }
-                break
-            case .serie:
-                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-                    return item.serie?.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
-                }
-                break
-                
             }
             
         }
@@ -205,9 +288,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         {
             deviceDes = true
             filteredDevices.removeAll()
+            self.productsTable.reloadData()
         }
         
-        self.productsTable.reloadData()
+        
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         deviceDes = true
@@ -244,6 +328,25 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         search.delegate?.searchBar?(search, textDidChange: qr)
         search.text = qr
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+            let contentYOffset = scrollView.contentOffset.y
+            let distanceFromBottom = scrollView.contentSize.height - contentYOffset
+
+            if distanceFromBottom < height {
+                if deviceDes
+                {
+                    self.getData(offset:off)
+                    
+                    debugPrint("final")
+                }
+                else
+                {
+                    self.getfilterData()
+                }
+            }
     }
 }
 

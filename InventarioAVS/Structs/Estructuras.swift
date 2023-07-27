@@ -9,13 +9,13 @@ import Foundation
 
 
 struct Device: Codable {
-    let id, cantidad, costo: Int
-    let codigo, producto, marca, fechaAlta: String
+    let id, cantidad, costo: Int?
+    let codigo, producto, marca, fechaAlta: String?
     let modelo, foto, observaciones: String?
-    let lugarId: Int
+    let lugarId: Int?
     let pertenece, descompostura, compra: String?
     let serie, proveedor, origen: String?
-    let lugar : Lugar
+    let lugar : Lugar?
 }
 
 struct DeviceResponse : Codable
@@ -27,6 +27,19 @@ struct UserRespose: Codable {
     let app_code : String
     let data : [loginUser]
 }
+
+struct filterResponse : Codable
+{
+    let app_code : String
+    let data : [products]
+}
+
+struct products : Codable
+{
+    let codigo , descripcion, lugar , marca , modelo, producto, serie : String?
+    let id : Int
+}
+
 
 struct loginUser : Codable
 {
