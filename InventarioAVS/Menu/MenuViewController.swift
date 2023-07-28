@@ -21,6 +21,10 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.navigationItem.title = ""
         setNavigationBar()
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        MenuCollection.collectionViewLayout.invalidateLayout()
+    }
     
     override func willMove(toParent parent: UIViewController?)
     {
