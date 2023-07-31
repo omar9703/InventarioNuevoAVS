@@ -52,7 +52,7 @@ func requestPetition<T : Decodable>(ofType type:T.Type,typeRequest : typeRequest
             let dataResponse = try decoder.decode(type, from: data ?? Data())
             dataReturn = dataResponse
             debugPrint(":::::::::::::::::_____::::::::::::::")
-            debugPrint(url)
+            debugPrint(dataResponse)
             debugPrint(":::::::::::::::::_____::::::::::::::")
         } catch {
             debugPrint(error.localizedDescription)

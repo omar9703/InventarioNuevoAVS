@@ -32,6 +32,7 @@ struct filterResponse : Codable
 {
     let app_code : String
     let data : [products]
+    let total_rows : Int?
 }
 
 struct products : Codable

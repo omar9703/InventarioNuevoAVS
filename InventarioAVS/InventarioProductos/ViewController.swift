@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate, FilterSwitchProtocol, qrReaderProtocol {
+    @IBOutlet weak var totalrows: UILabel!
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
     let alert = UIAlertController(title: nil, message: "Cargando", preferredStyle: .alert)
     @IBOutlet weak var qrButton: UIBarButtonItem!
@@ -113,6 +114,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                         self.filteredDevices.append(x)
                     }
                     DispatchQueue.main.async {
+                        self.totalrows.text =  "Total de articulos: \(dataResponse?.total_rows ?? 0) "
                         self.loading?.hideLoadingView()
                         self.productsTable.reloadData()
                     }
@@ -272,6 +274,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 if evaluateResponse(controller: self, httpCode: httpcode)
                 {
                     debugPrint(dataResponse?.data.count)
+                    
                     if dataResponse?.data.count ?? 0 < 30
                     {
                         self.cargandoFilter = true
@@ -283,6 +286,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     self.filteredDevices.removeAll()
                     self.filteredDevices = dataResponse?.data ?? [products]()
                     DispatchQueue.main.async {
+                        self.totalrows.isHidden = false
+                        self.totalrows.text =  "Total de articulos: \(dataResponse?.total_rows ?? 0) "
                         self.productsTable.reloadData()
                     }
                     
@@ -297,6 +302,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         else
         {
             deviceDes = true
+            totalrows.isHidden = true
             filteredDevices.removeAll()
             self.productsTable.reloadData()
         }

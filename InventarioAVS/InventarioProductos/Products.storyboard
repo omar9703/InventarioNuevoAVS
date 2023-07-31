@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="vjg-px-d3J">
-                                <rect key="frame" x="0.0" y="63" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="73" width="414" height="44"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ATO-qZ-DYO"/>
@@ -31,13 +31,19 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Qd-dn-amJ">
-                                <rect key="frame" x="0.0" y="107" width="414" height="755"/>
+                                <rect key="frame" x="0.0" y="117" width="414" height="745"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="bKC-fS-d5H" id="X7R-LX-YVw"/>
                                     <outlet property="delegate" destination="bKC-fS-d5H" id="3Yi-Mp-7K3"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4v-Tl-sud">
+                                <rect key="frame" x="198" y="53" width="18" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HTT-3z-Fqv"/>
                         <color key="backgroundColor" red="0.074509803920000006" green="0.070588235289999995" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,8 +53,10 @@
                             <constraint firstItem="HTT-3z-Fqv" firstAttribute="trailing" secondItem="vjg-px-d3J" secondAttribute="trailing" id="Qup-4N-qjy"/>
                             <constraint firstItem="vjg-px-d3J" firstAttribute="leading" secondItem="HTT-3z-Fqv" secondAttribute="leading" id="T29-xt-kR1"/>
                             <constraint firstItem="1Qd-dn-amJ" firstAttribute="leading" secondItem="HTT-3z-Fqv" secondAttribute="leading" id="UOY-Z6-ZoH"/>
-                            <constraint firstItem="vjg-px-d3J" firstAttribute="top" secondItem="HTT-3z-Fqv" secondAttribute="top" constant="15" id="oXQ-mf-Iun"/>
+                            <constraint firstItem="y4v-Tl-sud" firstAttribute="top" secondItem="HTT-3z-Fqv" secondAttribute="top" constant="5" id="dz6-xD-Lwv"/>
+                            <constraint firstItem="vjg-px-d3J" firstAttribute="top" secondItem="HTT-3z-Fqv" secondAttribute="top" constant="25" id="oXQ-mf-Iun"/>
                             <constraint firstItem="HTT-3z-Fqv" firstAttribute="bottom" secondItem="1Qd-dn-amJ" secondAttribute="bottom" id="sUC-4f-hbi"/>
+                            <constraint firstItem="y4v-Tl-sud" firstAttribute="centerX" secondItem="EDe-CI-vPH" secondAttribute="centerX" id="zYR-pi-BW1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2rq-1C-TsJ">
@@ -62,6 +70,7 @@
                         <outlet property="productsTable" destination="1Qd-dn-amJ" id="vsN-nl-GSq"/>
                         <outlet property="qrButton" destination="aJf-Sr-eoV" id="rnO-9L-MEp"/>
                         <outlet property="search" destination="vjg-px-d3J" id="qf2-u9-Bpm"/>
+                        <outlet property="totalrows" destination="y4v-Tl-sud" id="jAV-1c-WRJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKO-8Q-Odv" sceneMemberID="firstResponder"/>
