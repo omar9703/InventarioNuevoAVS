@@ -11,17 +11,19 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
     
     var comentarios = ""
     var phtobase64 = ""
+    var cargandoFilter = false
     @IBOutlet weak var tableReporte: UITableView!
     @IBOutlet weak var agregarFoto: UIButton!
     @IBOutlet weak var searchCamera: UIButton!
     @IBOutlet weak var testsearch: UISearchBar!
     var imagenDispositivo : UIImage?
+    var deviceFiltered : products?
     var device : Device?
     var deviceDes = true
     var descripcionReport = false
     var devices = [Device]()
     var loading : LoadingView?
-    var filteredDevices = [Device]()
+    var filteredDevices = [products]()
     override func viewDidLoad() {
         super.viewDidLoad()
         testsearch.delegate = self
@@ -46,7 +48,7 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
             if comentarios != "" && phtobase64 != ""
             {
                 loading?.showLoadingView()
-                requestPetition(ofType: Device.self, typeRequest: .POST, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/reportes", parameters: ["dispositivoId":d.id,"usuarioId":UsuarioData.GetUserId() ?? 0,"comentarios":comentarios]) { code, data in
+                requestPetition(ofType: Device.self, typeRequest: .POST, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/reportes", parameters: ["dispositivoId":deviceDes ? d.id! : deviceFiltered!.id,"usuarioId":UsuarioData.GetUserId() ?? 0,"comentarios":comentarios,"foto":phtobase64]) { code, data in
                     switch code
                     {
                     case 200...299:
@@ -60,6 +62,10 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
                         }
                         break
                     default:
+                        DispatchQueue.main.async {
+                            self.loading?.hideLoadingView()
+                            self.alerta(message: "Ocurrio un error en el servicio")
+                        }
                         break
                     }
                 }
@@ -89,7 +95,7 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
     func getDevices()
     {
         self.loading?.showLoadingView()
-        requestPetition(ofType: DeviceResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos?limit=1&offset=1") { (httpcode, dataResponse) in
+        requestPetition(ofType: DeviceResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos?limit=100&offset=1") { (httpcode, dataResponse) in
             if evaluateResponse(controller: self, httpCode: httpcode)
             {
                 self.devices.removeAll()
@@ -148,12 +154,14 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
             cell.marca.text = devices[indexPath.row].marca
             cell.modelo.text = devices[indexPath.row].modelo
             cell.nombre.text = devices[indexPath.row].producto
+            cell.lugar.text =  devices[indexPath.row].lugar?.lugar
             
         }
         cell.backgroundColor = .clear
         cell.marca.textColor = .white
         cell.modelo.textColor = .white
         cell.nombre.textColor = .white
+            cell.lugar.textColor = .white
             cell.selectionStyle = .none
         return cell
         }
@@ -167,12 +175,26 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
             if indexPath.row == 0
             {
                 cell.titulo.text = "Nombre"
-                cell.descripcion.text = device?.producto
+                if !deviceDes
+                {
+                    cell.descripcion.text = deviceFiltered?.producto
+                }
+                else
+                {
+                    cell.descripcion.text = device?.producto
+                }
             }
             else if indexPath.row == 1
             {
                 cell.titulo.text = "Codigo"
-                cell.descripcion.text = device?.codigo
+                if !deviceDes
+                {
+                    cell.descripcion.text = deviceFiltered?.codigo
+                }
+                else
+                {
+                    cell.descripcion.text = device?.codigo
+                }
             }
             return cell
             }
@@ -205,10 +227,33 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
         deviceDes = false
         device = nil
         descripcionReport = false
+        agregarFoto.isEnabled = false
         if searchText != ""
         {
-            filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-                return item.codigo?.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
+            requestPetition(ofType: filterResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/filterdeviceFields?limit=30&offset=\(1)",header: searchText) { (httpcode, dataResponse) in
+                if evaluateResponse(controller: self, httpCode: httpcode)
+                {
+                    debugPrint(dataResponse?.data.count)
+                    
+                    if dataResponse?.data.count ?? 0 < 30
+                    {
+                        self.cargandoFilter = true
+                    }
+                    else
+                    {
+                        self.cargandoFilter = false
+                    }
+                    self.filteredDevices.removeAll()
+                    self.filteredDevices = dataResponse?.data ?? [products]()
+                    DispatchQueue.main.async {
+                        self.tableReporte.reloadData()
+                    }
+                    
+                }
+                else
+                {
+                    
+                }
             }
         }
         else
@@ -223,7 +268,15 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
         if !descripcionReport
         {
         descripcionReport = true
-        device = deviceDes ? devices[indexPath.row] : filteredDevices[indexPath.row]
+            agregarFoto.isEnabled = true
+            if !deviceDes
+            {
+                deviceFiltered = filteredDevices[indexPath.row]
+            }
+            else
+            {
+                device = devices[indexPath.row]
+            }
         tableReporte.reloadData()
         }
     }
@@ -239,16 +292,18 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
 extension LevantarViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     private func showAlert() {
-
-            let alert = UIAlertController(title: "Seleccion de Imagen", message: "Origen de la imagen", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Camara", style: .default, handler: {(action: UIAlertAction) in
-                self.getImage(fromSourceType: .camera)
-            }))
-            alert.addAction(UIAlertAction(title: "Album de fotos", style: .default, handler: {(action: UIAlertAction) in
-                self.getImage(fromSourceType: .photoLibrary)
-            }))
-            alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+if descripcionReport
+        {
+    let alert = UIAlertController(title: "Seleccion de Imagen", message: "Origen de la imagen", preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Camara", style: .default, handler: {(action: UIAlertAction) in
+        self.getImage(fromSourceType: .camera)
+    }))
+    alert.addAction(UIAlertAction(title: "Album de fotos", style: .default, handler: {(action: UIAlertAction) in
+        self.getImage(fromSourceType: .photoLibrary)
+    }))
+    alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: nil))
+    self.present(alert, animated: true, completion: nil)
+}
         }
 
         //get image from source type

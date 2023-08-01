@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9MA-4f-aTH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9MA-4f-aTH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="u5L-Q2-ans">
-                                <rect key="frame" x="155" y="98" width="104" height="24"/>
+                                <rect key="frame" x="155" y="102" width="104" height="24"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0v-af-b35">
                                         <rect key="frame" x="0.0" y="0.0" width="39.5" height="24"/>
@@ -36,7 +37,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B r o a d c a s t   D i v i s i o n" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dP-Hj-T3M">
-                                <rect key="frame" x="93.5" y="127" width="227" height="21.5"/>
+                                <rect key="frame" x="93.5" y="131" width="227" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21.5" id="Uwi-ok-rBU"/>
                                 </constraints>
@@ -45,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ly-bE-TQk">
-                                <rect key="frame" x="0.0" y="168.5" width="414" height="608.5"/>
+                                <rect key="frame" x="0.0" y="172.5" width="414" height="604.5"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="Ingrese Codigo QR" translatesAutoresizingMaskIntoConstraints="NO" id="48S-n9-QS0">
                                         <rect key="frame" x="0.0" y="0.0" width="339" height="60"/>
@@ -73,7 +74,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wI2-Ax-kOT">
-                                        <rect key="frame" x="0.0" y="60" width="414" height="538.5"/>
+                                        <rect key="frame" x="0.0" y="60" width="414" height="534.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
@@ -91,7 +92,7 @@
                                     <constraint firstAttribute="bottom" secondItem="wI2-Ax-kOT" secondAttribute="bottom" constant="10" id="xuE-VW-FLA"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5o5-TW-pb3">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5o5-TW-pb3">
                                 <rect key="frame" x="60.5" y="810" width="293" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="293" id="8Fu-tP-b9P"/>
@@ -144,7 +145,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9MA-4f-aTH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sEe-AS-E51">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

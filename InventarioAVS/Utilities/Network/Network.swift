@@ -46,7 +46,7 @@ func requestPetition<T : Decodable>(ofType type:T.Type,typeRequest : typeRequest
             httpResponseCode = httpResponse.statusCode
             debugPrint(httpResponse.statusCode)
         }
-//       print(String(data: data ?? Data(), encoding: .utf8)!)
+       debugPrint(String(data: data ?? Data(), encoding: .utf8)!)
         let decoder = JSONDecoder()
         do {
             let dataResponse = try decoder.decode(type, from: data ?? Data())
