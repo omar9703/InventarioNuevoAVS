@@ -62,8 +62,8 @@
             filePath = "InventarioAVS/LevantarReportes/LevantarViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "searchBarShouldEndEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -80,8 +80,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "268"
             endingLineNumber = "268"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
+            landmarkName = "LevantarViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,8 +126,8 @@
             filePath = "InventarioAVS/Reporte/ReporteViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,10 +142,153 @@
             filePath = "InventarioAVS/Reporte/ReporteViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "07051193-2CC2-45A2-AB47-152BE9AC3B0B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InventarioAVS/Utilities/Network/Network.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "requestPetition(ofType:typeRequest:url:parameters:header:completion:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F317204-CAF8-45C9-9231-D80D4AA08FCB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InventarioAVS/LevantarReportes/LevantarViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "getDevices()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2E9E4FE-E6FA-4C23-9D02-F086E178F972"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InventarioAVS/Reporte/ReporteViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "getFilteredData(data:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B2E9E4FE-E6FA-4C23-9D02-F086E178F972 - 9f4f80f8f8cd4b89"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, Swift.Optional&lt;InventarioAVS.Historial&gt;) -&gt; () in InventarioAVS.ReporteViewController.getFilteredData(data: Swift.String) -&gt; ()"
+                  moduleName = "InventarioAVS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Reporte/ReporteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  uuid = "B2E9E4FE-E6FA-4C23-9D02-F086E178F972 - ebde06369a12ab1e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InventarioAVS.ReporteViewController.getFilteredData(data: Swift.String) -&gt; ()"
+                  moduleName = "InventarioAVS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Reporte/ReporteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "B2E9E4FE-E6FA-4C23-9D02-F086E178F972 - 9f4f80f8f8cd4be8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, Swift.Optional&lt;InventarioAVS.Historial&gt;) -&gt; () in InventarioAVS.ReporteViewController.getFilteredData(data: Swift.String) -&gt; ()"
+                  moduleName = "InventarioAVS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Reporte/ReporteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "252">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D441F13-4AAA-402A-9A99-11303D639931"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InventarioAVS/Reporte/ReporteViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9D441F13-4AAA-402A-9A99-11303D639931 - a57aa29c0cbec2d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InventarioAVS.ReporteViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "InventarioAVS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Reporte/ReporteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "276">
+               </Location>
+               <Location
+                  uuid = "9D441F13-4AAA-402A-9A99-11303D639931 - a57aa29c0cbec2f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InventarioAVS.ReporteViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "InventarioAVS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Reporte/ReporteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "160">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

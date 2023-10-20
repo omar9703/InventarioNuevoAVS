@@ -19,7 +19,7 @@ func requestPetition<T : Decodable>(ofType type:T.Type,typeRequest : typeRequest
     var requestParams = URLRequest(url: URL(string: url)!)
     var Bearer : String = ""
     var httpResponseCode : Int = 0
-    
+    debugPrint(url)
     switch typeRequest {
     case .POST:
         requestParams.setValue("application/json", forHTTPHeaderField: "Content-Type")

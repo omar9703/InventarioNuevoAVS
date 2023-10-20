@@ -10,6 +10,7 @@ import UIKit
 class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var device : Device? = nil
     var device2 : products? = nil
+    var historia : movimiento?
     @IBOutlet weak var tableDetail: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,52 +32,68 @@ class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDat
         if indexPath.row == 0
         {
             cell.titulo.text = "Nombre"
-            cell.descripcion.text = device?.producto ?? device2?.producto
+            cell.descripcion.text = device?.producto ?? device2?.producto ?? historia?.dispositivo?.producto
         }
         else if indexPath.row == 1
         {
             cell.titulo.text = "Marca"
-            cell.descripcion.text = device?.marca ?? device2?.marca
+            cell.descripcion.text = device?.marca ?? device2?.marca ?? historia?.dispositivo?.marca
         }
         else if indexPath.row == 2
         {
             cell.titulo.text = "Modelo"
-            cell.descripcion.text = device?.modelo ?? device2?.modelo
+            cell.descripcion.text = device?.modelo ?? device2?.modelo ?? historia?.dispositivo?.modelo
         }
         else if indexPath.row == 3
         {
             cell.titulo.text = "Codigo"
-            cell.descripcion.text = device?.codigo ?? device2?.codigo
+            cell.descripcion.text = device?.codigo ?? device2?.codigo ?? historia?.dispositivo?.codigo
         }
         else if indexPath.row == 4
         {
             cell.titulo.text = "Origen"
-            cell.descripcion.text = device?.origen
+            cell.descripcion.text = device?.origen ?? historia?.dispositivo?.origen
         }
         else if indexPath.row == 5
         {
             cell.titulo.text = "Lugar actual"
-            cell.descripcion.text = device?.descompostura ?? device2?.lugar
+            cell.descripcion.text = device?.descompostura ?? device2?.lugar ?? historia?.lugar?.lugar
         }
         else if indexPath.row == 6
         {
             cell.titulo.text = "Compra"
-            cell.descripcion.text = device?.compra
+            cell.descripcion.text = device?.compra ?? historia?.dispositivo?.compra
         }
         else if indexPath.row == 7
         {
             cell.titulo.text = "Observaciones"
-            cell.descripcion.text = device?.observaciones
+            cell.descripcion.text = device?.observaciones ?? historia?.dispositivo?.observaciones
         }
         else if indexPath.row == 8
         {
-            cell.titulo.text = "Costo"
-            cell.descripcion.text = String(device?.costo ?? 0)
+            if let _ = historia
+            {
+                cell.titulo.text = "Usuario"
+                cell.descripcion.text = historia?.usuario?.nombre
+            }
+            else
+            {
+                cell.titulo.text = "Costo"
+                cell.descripcion.text = String(device?.costo ?? 0)
+            }
         }
         else if indexPath.row == 9
         {
-            cell.titulo.text = "Accesorio de"
-            cell.descripcion.text = device?.pertenece
+            if let _ = historia
+            {
+                cell.titulo.text = "Serie"
+                cell.descripcion.text = historia?.dispositivo?.serie
+            }
+            else
+            {
+                cell.titulo.text = "Accesorio de"
+                cell.descripcion.text = device?.pertenece
+            }
         }
         else if indexPath.row == 10
         {
@@ -86,7 +103,7 @@ class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDat
         else if indexPath.row == 11
         {
             cell.titulo.text = "Fecha"
-            cell.descripcion.text = device?.fechaAlta
+            cell.descripcion.text = device?.fechaAlta ?? historia?.lugar?.fechaAlta?.setDateProperly()
         }
         return cell
     }

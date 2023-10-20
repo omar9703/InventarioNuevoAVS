@@ -72,9 +72,9 @@ import Foundation
 
 // MARK: - Welcome
 struct Reportes: Codable {
-    let appCode: String
+    let appCode: String?
         let data: [Datum]
-        let message: [Message]
+        let message: [Message]?
 
         enum CodingKeys: String, CodingKey {
             case appCode = "app_code"
@@ -82,16 +82,63 @@ struct Reportes: Codable {
         }
 }
 
+struct Historial : Codable
+{
+    let appCode: String
+        let data: [movimiento]?
+        let message: [Message]?
+
+        enum CodingKeys: String, CodingKey {
+            case appCode = "app_code"
+            case data, message
+        }
+}
+
+struct movimiento : Codable
+{
+    let lugarID, cantidadActual: Int
+        let comentarios: String?
+        let dispositivo: Dispositivo?
+        let dispositivoID: Int
+        let fechaAlta, fechaUltimaModificacion: String?
+        let foto, foto2: String?
+        let id: Int
+        let idMovimiento: String?
+        let lugar: Lugar?
+        let tipoMOVID: Int
+        let tipoMovimiento: TipoMovimiento?
+        let usuario: Usuarios?
+        let usuarioID: Int
+    
+    enum CodingKeys: String, CodingKey {
+            case lugarID = "LugarId"
+            case cantidadActual = "cantidad_Actual"
+            case comentarios, dispositivo
+            case dispositivoID = "dispositivoId"
+            case fechaAlta, fechaUltimaModificacion, foto, foto2, id, idMovimiento, lugar
+            case tipoMOVID = "tipoMovId"
+            case tipoMovimiento, usuario
+            case usuarioID = "usuarioId"
+        }
+}
+
+struct TipoMovimiento: Codable {
+    let descripcion: String?
+    let fechaAlta, fechaUltimaModificacion: String?
+    let id: Int
+    let tipo, nombre: String?
+}
+
 // MARK: - Datum
 struct Datum: Codable {
     let comentarios: String?
-    let dispositivo: Dispositivo
+    let dispositivo: Dispositivo?
     let dispositivoId: Int
-    let fechaAlta, fechaUltimaModificacion: String
-    let foto: Foto?
+    let fechaAlta, fechaUltimaModificacion: String?
+    let foto: String?
     let id: Int
-    let usuario: Usuarios
-    let usuarioId: Int
+    let usuario: Usuarios?
+    let usuarioId: Int?
 
 }
 

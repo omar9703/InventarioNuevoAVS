@@ -38,7 +38,7 @@ class LoadingView : UIView
         contentLayer?.masksToBounds = true
         contentLayer?.cornerRadius = 5
         
-        let spinner = UIActivityIndicatorView(style: .white)
+        let spinner = UIActivityIndicatorView(style: .medium)
         spinner.frame = CGRect(x: contentView!.frame.size.width / 2 - 22.0, y: contentView!.frame.size.height / 2 - 44, width: 44.0, height: 44.0)
         contentView!.addSubview(spinner)
         spinner.startAnimating()

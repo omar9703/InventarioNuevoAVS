@@ -21,9 +21,9 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
     var device : Device?
     var deviceDes = true
     var descripcionReport = false
-    var devices = [Device]()
+    var devices : Reportes?
     var loading : LoadingView?
-    var filteredDevices = [products]()
+    var filteredDevices = [Datum]()
     override func viewDidLoad() {
         super.viewDidLoad()
         testsearch.delegate = self
@@ -38,7 +38,6 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
         loading = LoadingView()
         self.view.addSubview(loading!)
         getDevices()
-        print(UsuarioData.GetUserId())
         // Do any additional setup after loading the view.
     }
    
@@ -95,11 +94,11 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
     func getDevices()
     {
         self.loading?.showLoadingView()
-        requestPetition(ofType: DeviceResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos?limit=100&offset=1") { (httpcode, dataResponse) in
+        requestPetition(ofType: Reportes.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/reportes?limit=30&offset=1") { (httpcode, dataResponse) in
             if evaluateResponse(controller: self, httpCode: httpcode)
             {
-                self.devices.removeAll()
-                self.devices = dataResponse!.data
+                
+                self.devices = dataResponse
                 DispatchQueue.main.async {
                     self.loading?.hideLoadingView()
                     self.tableReporte.reloadData()
@@ -129,7 +128,7 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
         }
         else
         {
-            return devices.count
+            return devices?.data.count ?? 0
         }
         }
         else
@@ -142,21 +141,22 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
         if !descripcionReport
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductoTableViewCell
-        if !deviceDes
-        {
+//        if !deviceDes
+//        {
+//            
+//            cell.marca.text = filteredDevices[indexPath.row].dispositivo.marca
+//            cell.modelo.text = filteredDevices[indexPath.row].dispositivo.descompostura
+//            cell.nombre.text = filteredDevices[indexPath.row].dispositivo.producto
+//            cell.lugar.text = filteredDevices[indexPath.row].dispositivo.lugar?.lugar
+//        }
+//        else
+//        {
+            cell.marca.text = devices?.data[indexPath.row].dispositivo?.marca
+            cell.modelo.text = devices?.data[indexPath.row].comentarios
+            cell.nombre.text = devices?.data[indexPath.row].dispositivo?.producto
+            cell.lugar.text =  devices?.data[indexPath.row].dispositivo?.lugar?.lugar
             
-            cell.marca.text = filteredDevices[indexPath.row].marca
-            cell.modelo.text = filteredDevices[indexPath.row].modelo
-            cell.nombre.text = filteredDevices[indexPath.row].producto
-        }
-        else
-        {
-            cell.marca.text = devices[indexPath.row].marca
-            cell.modelo.text = devices[indexPath.row].modelo
-            cell.nombre.text = devices[indexPath.row].producto
-            cell.lugar.text =  devices[indexPath.row].lugar?.lugar
-            
-        }
+//        }
         cell.backgroundColor = .clear
         cell.marca.textColor = .white
         cell.modelo.textColor = .white
@@ -223,63 +223,63 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        deviceDes = false
-        device = nil
-        descripcionReport = false
-        agregarFoto.isEnabled = false
-        if searchText != ""
-        {
-            requestPetition(ofType: filterResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/filterdeviceFields?limit=30&offset=\(1)",header: searchText) { (httpcode, dataResponse) in
-                if evaluateResponse(controller: self, httpCode: httpcode)
-                {
-                    debugPrint(dataResponse?.data.count)
-                    
-                    if dataResponse?.data.count ?? 0 < 30
-                    {
-                        self.cargandoFilter = true
-                    }
-                    else
-                    {
-                        self.cargandoFilter = false
-                    }
-                    self.filteredDevices.removeAll()
-                    self.filteredDevices = dataResponse?.data ?? [products]()
-                    DispatchQueue.main.async {
-                        self.tableReporte.reloadData()
-                    }
-                    
-                }
-                else
-                {
-                    
-                }
-            }
-        }
-        else
-        {
-            deviceDes = true
-            filteredDevices.removeAll()
-        }
-        
-        self.tableReporte.reloadData()
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !descripcionReport
-        {
-        descripcionReport = true
-            agregarFoto.isEnabled = true
-            if !deviceDes
-            {
-                deviceFiltered = filteredDevices[indexPath.row]
-            }
-            else
-            {
-                device = devices[indexPath.row]
-            }
-        tableReporte.reloadData()
-        }
-    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        deviceDes = false
+//        device = nil
+//        descripcionReport = false
+//        agregarFoto.isEnabled = false
+//        if searchText != ""
+//        {
+//            requestPetition(ofType: filterResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/filterdeviceFields?limit=30&offset=\(1)",header: searchText) { (httpcode, dataResponse) in
+//                if evaluateResponse(controller: self, httpCode: httpcode)
+//                {
+//                    debugPrint(dataResponse?.data.count)
+//                    
+//                    if dataResponse?.data.count ?? 0 < 30
+//                    {
+//                        self.cargandoFilter = true
+//                    }
+//                    else
+//                    {
+//                        self.cargandoFilter = false
+//                    }
+//                    self.filteredDevices.removeAll()
+//                    self.filteredDevices = dataResponse?.data ?? [Datum]()
+//                    DispatchQueue.main.async {
+//                        self.tableReporte.reloadData()
+//                    }
+//                    
+//                }
+//                else
+//                {
+//                    
+//                }
+//            }
+//        }
+//        else
+//        {
+//            deviceDes = true
+//            filteredDevices.removeAll()
+//        }
+//        
+//        self.tableReporte.reloadData()
+//    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if !descripcionReport
+//        {
+//        descripcionReport = true
+//            agregarFoto.isEnabled = true
+//            if !deviceDes
+//            {
+//                deviceFiltered = filteredDevices[indexPath.row]
+//            }
+//            else
+//            {
+//                device = devices[indexPath.row]
+//            }
+//        tableReporte.reloadData()
+//        }
+//    }
     @IBAction func addPhotoAction(_ sender: UIButton) {
         self.showAlert()
     }
