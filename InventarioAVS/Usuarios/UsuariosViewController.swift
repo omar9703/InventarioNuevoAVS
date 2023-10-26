@@ -56,6 +56,9 @@ class UsuariosViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.tableUsers.reloadData()
     }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UserDetailViewController()
         if userdes

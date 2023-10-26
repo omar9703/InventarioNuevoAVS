@@ -313,6 +313,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         deviceDes = true
         self.productsTable.reloadData()
     }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        search.resignFirstResponder()
+    }
     func ChangeSwitchFilter(filtro: TypeFilter) {
         self.filtro = filtro
         switch filtro {

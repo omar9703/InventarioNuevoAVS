@@ -119,6 +119,9 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
         testsearch.delegate?.searchBar?(testsearch, textDidChange: qr)
         testsearch.text = qr
     }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !descripcionReport
         {

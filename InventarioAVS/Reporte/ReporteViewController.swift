@@ -97,6 +97,9 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
             }
         }
     }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !deviceDes
         {
