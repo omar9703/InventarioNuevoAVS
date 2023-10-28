@@ -14,11 +14,13 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
         search.delegate?.searchBar?(search, textDidChange: qr)
 //        getFilteredData(data: qr)
     }
-    
+    var cargando = false
+    var off = 0
     var deviceDes = true
-    var devices : Historial?
+    var devices = [movimiento]()
     var loading : LoadingView?
-    var filteredDevices : Historial?
+    var searchText = ""
+    var filteredDevices = [movimiento]()
     @IBOutlet weak var search: UISearchBar!
     @IBOutlet weak var tableReportes: UITableView!
     override func viewDidLoad() {
@@ -28,7 +30,8 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
         hideKeyboardWhenTappedAround()
         loading = LoadingView()
         self.view.addSubview(loading!)
-        getData()
+        
+        getData(offset: off)
         search.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -36,10 +39,15 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
         deviceDes = false
         if searchText != ""
         {
+            self.searchText = searchText
+            cargando = false
+            off=0
             getFilteredData(data : searchText)
         }
         else
         {
+            self.searchText = ""
+            off+=1
             deviceDes = true
         }
         
@@ -48,23 +56,30 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func getFilteredData(data : String)
     {
-        requestPetition(ofType: Historial.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/movimientos/filter/\(data)?offset=1&limit=20") { (httpcode, dataResponse) in
-            if evaluateResponse(controller: self, httpCode: httpcode)
-            {
-                self.filteredDevices = dataResponse
-                DispatchQueue.main.async {
-                    self.loading?.hideLoadingView()
-                    self.tableReportes.reloadData()
+        if !cargando
+        {
+            loading?.showLoadingView()
+            cargando = true
+            off+=1
+            requestPetition(ofType: Historial.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/movimientos/filter/\(data)?offset=\(off)&limit=20") { (httpcode, dataResponse) in
+                self.cargando = false
+                if evaluateResponse(controller: self, httpCode: httpcode)
+                {
+                    self.filteredDevices = dataResponse?.data ?? [movimiento]()
+                    DispatchQueue.main.async {
+                        self.loading?.hideLoadingView()
+                        self.tableReportes.reloadData()
+                    }
+                    
                 }
-                
-            }
-            else
-            {
-                DispatchQueue.main.async {
-                    self.loading?.hideLoadingView()
-
+                else
+                {
+                    DispatchQueue.main.async {
+                        self.loading?.hideLoadingView()
+                        
+                    }
+                    
                 }
-                
             }
         }
     }
@@ -74,26 +89,35 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
         self.present(vc, animated: true, completion: nil)
     }
     
-    func getData()
+    func getData(offset : Int)
     {
-        self.loading?.showLoadingView()
-        requestPetition(ofType: Historial.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/movimientos?offset=1&limit=20") { (httpcode, dataResponse) in
-            if evaluateResponse(controller: self, httpCode: httpcode)
-            {
-                self.devices = dataResponse
-                DispatchQueue.main.async {
-                    self.loading?.hideLoadingView()
-                    self.tableReportes.reloadData()
+        if !cargando
+        {
+            loading?.showLoadingView()
+            cargando = true
+            off+=1
+            requestPetition(ofType: Historial.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/movimientos?offset=\(off)&limit=20") { (httpcode, dataResponse) in
+                self.cargando = false
+                if evaluateResponse(controller: self, httpCode: httpcode)
+                {
+                    for x in dataResponse!.data!
+                    {
+                        self.devices.append(x)
+                    }
+                    DispatchQueue.main.async {
+                        self.loading?.hideLoadingView()
+                        self.tableReportes.reloadData()
+                    }
+                    
                 }
-                
-            }
-            else
-            {
-                DispatchQueue.main.async {
-                    self.loading?.hideLoadingView()
-
+                else
+                {
+                    DispatchQueue.main.async {
+                        self.loading?.hideLoadingView()
+                        
+                    }
+                    
                 }
-                
             }
         }
     }
@@ -103,11 +127,11 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !deviceDes
         {
-            return filteredDevices?.data?.count ?? 0
+            return filteredDevices.count
         }
         else
         {
-            return devices?.data?.count ?? 0
+            return devices.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -115,17 +139,17 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if !deviceDes
         {
             
-            cell.marca.text = filteredDevices?.data?[indexPath.row].dispositivo?.codigo
-            cell.modelo.text = filteredDevices?.data?[indexPath.row].lugar?.fechaAlta?.setDateProperly()
-            cell.nombre.text = filteredDevices?.data?[indexPath.row].dispositivo?.producto
-            cell.lugar.text = filteredDevices?.data?[indexPath.row].lugar?.lugar
+            cell.marca.text = filteredDevices[indexPath.row].dispositivo?.codigo
+            cell.modelo.text = filteredDevices[indexPath.row].lugar?.fechaAlta?.setDateProperly()
+            cell.nombre.text = filteredDevices[indexPath.row].dispositivo?.producto
+            cell.lugar.text = filteredDevices[indexPath.row].lugar?.lugar
         }
         else
         {
-            cell.marca.text = devices?.data?[indexPath.row].dispositivo?.codigo
-            cell.modelo.text = devices?.data?[indexPath.row].lugar?.fechaAlta?.setDateProperly()
-            cell.nombre.text = devices?.data?[indexPath.row].dispositivo?.producto
-            cell.lugar.text = devices?.data?[indexPath.row].lugar?.lugar
+            cell.marca.text = devices[indexPath.row].dispositivo?.codigo
+            cell.modelo.text = devices[indexPath.row].lugar?.fechaAlta?.setDateProperly()
+            cell.nombre.text = devices[indexPath.row].dispositivo?.producto
+            cell.lugar.text = devices[indexPath.row].lugar?.lugar
             
         }
         cell.backgroundColor = .clear
@@ -139,13 +163,31 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let vc = DetailViewController()
         if !deviceDes
         {
-            vc.historia = filteredDevices?.data?[indexPath.row]
+            vc.historia = filteredDevices[indexPath.row]
         }
         else
         {
-            vc.historia = devices?.data?[indexPath.row]
+            vc.historia = devices[indexPath.row]
         }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+            let contentYOffset = scrollView.contentOffset.y
+            let distanceFromBottom = scrollView.contentSize.height - contentYOffset
+
+            if distanceFromBottom < height {
+                if deviceDes
+                {
+                    self.getData(offset:off)
+                    
+                }
+                else
+                {
+                    self.getFilteredData(data: self.searchText)
+                }
+            }
     }
 
 }

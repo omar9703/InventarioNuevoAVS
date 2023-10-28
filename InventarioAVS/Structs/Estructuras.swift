@@ -149,9 +149,9 @@ struct Dispositivo: Codable {
     let codigo, compra: String?
     let costo: Int?
     let descompostura, fechaAlta, fechaUltimaModificacion: String?
-    let foto: Foto?
-    let id: Int
-    let idMov: Int?
+    let foto: String?
+    let id: Int?
+    let idMov: String?
     let lugar: Lugar?
     let lugarId: Int?
     let marca, modelo, observaciones, origen: String?

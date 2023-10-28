@@ -94,7 +94,7 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
     func getDevices()
     {
         self.loading?.showLoadingView()
-        requestPetition(ofType: Reportes.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/reportes?limit=30&offset=1") { (httpcode, dataResponse) in
+        requestPetition(ofType: Reportes.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/reportes?limit=9&offset=1") { (httpcode, dataResponse) in
             if evaluateResponse(controller: self, httpCode: httpcode)
             {
                 

@@ -241,34 +241,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         {
             searchtext = searchText
             deviceDes = false
-//            switch filtro {
-//            case .nombre:
-//                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-//                    return item.producto.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
-//                }
-//                break
-//            case .codigo:
-//                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-//                    return item.codigo.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
-//                }
-//                break
-//            case .marca:
-//                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-//                    return item.marca.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
-//                }
-//                break
-//            case .modelo:
-//                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-//                    return item.modelo?.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
-//                }
-//                break
-//            case .serie:
-//                filteredDevices = searchText.isEmpty ? devices : devices.filter{(item: Device) ->Bool in
-//                    return item.serie?.range(of: searchText, options: .caseInsensitive, range: nil,locale: nil) != nil
-//                }
-//                break
-//
-//            }
             self.offFilter = 1
             requestPetition(ofType: filterResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/filterdeviceFields?limit=30&offset=\(1)",header: searchText) { (httpcode, dataResponse) in
                 if evaluateResponse(controller: self, httpCode: httpcode)
