@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -75,13 +75,19 @@
                                     <action selector="CamreOpen:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kh5-yX-Quy"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="dE5-By-Gr6">
+                                <rect key="frame" x="372" y="53" width="37" height="37"/>
+                                <color key="color" red="0.97254901959999995" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.074509803920000006" green="0.08235294118" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NQQ-4D-ftM" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="4AG-Vt-mAx"/>
                             <constraint firstAttribute="trailing" secondItem="TGi-13-Yc9" secondAttribute="trailing" id="5xJ-Zg-s3l"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dE5-By-Gr6" secondAttribute="trailing" constant="5" id="8fa-jC-nzr"/>
                             <constraint firstItem="NQQ-4D-ftM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="RUs-1f-FD7"/>
+                            <constraint firstItem="dE5-By-Gr6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="5" id="TKq-jo-hgy"/>
                             <constraint firstItem="L2K-kw-tWB" firstAttribute="top" secondItem="NsX-nL-6w1" secondAttribute="bottom" constant="20" id="dSB-tj-Xly"/>
                             <constraint firstItem="NsX-nL-6w1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eLA-5s-NMu"/>
                             <constraint firstAttribute="bottom" secondItem="L2K-kw-tWB" secondAttribute="bottom" id="gRD-1f-6b8"/>
@@ -95,6 +101,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="Anim" destination="dE5-By-Gr6" id="Aab-1z-Auv"/>
                         <outlet property="search" destination="NsX-nL-6w1" id="YNl-3u-1QE"/>
                         <outlet property="tableReportes" destination="L2K-kw-tWB" id="JSd-31-NNc"/>
                     </connections>

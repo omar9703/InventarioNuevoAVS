@@ -9,18 +9,22 @@ import UIKit
 
 class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate, qrReaderProtocol {
     func qrReadit(qr: String) {
-        self.loading?.showLoadingView()
+//        self.loading?.showLoadingView()
         search.text = qr
         search.delegate?.searchBar?(search, textDidChange: qr)
+        self.resultCount = qr.count - 1
 //        getFilteredData(data: qr)
     }
+    var resultCount = 0
     var cargando = false
     var off = 0
     var deviceDes = true
     var devices = [movimiento]()
+    @IBOutlet weak var Anim: UIActivityIndicatorView!
     var loading : LoadingView?
     var searchText = ""
     var filteredDevices = [movimiento]()
+    var dispatchGroup : DispatchGroup?
     @IBOutlet weak var search: UISearchBar!
     @IBOutlet weak var tableReportes: UITableView!
     override func viewDidLoad() {
@@ -35,8 +39,16 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
         search.delegate = self
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Anim.isHidden = true
+       
+        
+    }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         deviceDes = false
+
         if searchText != ""
         {
             self.searchText = searchText
@@ -46,9 +58,11 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
         else
         {
+            self.resultCount = 0
             self.searchText = ""
             off+=1
             deviceDes = true
+            self.filteredDevices.removeAll()
         }
         
         self.tableReportes.reloadData()
@@ -58,17 +72,37 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
     {
         if !cargando
         {
-            loading?.showLoadingView()
+            Anim.isHidden = false
+            Anim.startAnimating()
+            
             cargando = true
             off+=1
             requestPetition(ofType: Historial.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/movimientos/filter/\(data)?offset=\(off)&limit=20") { (httpcode, dataResponse) in
                 self.cargando = false
+                self.resultCount+=1
                 if evaluateResponse(controller: self, httpCode: httpcode)
                 {
-                    self.filteredDevices = dataResponse?.data ?? [movimiento]()
+                    if self.off > 1
+                    {
+                        self.resultCount-=1
+                        for x in dataResponse!.data!
+                        {
+                            self.filteredDevices.append(x)
+                        }
+                    }
+                    else
+                    {
+                        self.filteredDevices = dataResponse!.data!
+                    }
+                    
                     DispatchQueue.main.async {
                         self.loading?.hideLoadingView()
                         self.tableReportes.reloadData()
+                        if self.searchText.count == self.resultCount
+                        {
+                            self.Anim.isHidden = true
+                            
+                        }
                     }
                     
                 }
@@ -76,10 +110,15 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 {
                     DispatchQueue.main.async {
                         self.loading?.hideLoadingView()
-                        
+                        if self.searchText.count == self.resultCount
+                        {
+                            self.Anim.isHidden = true
+                            
+                        }
                     }
                     
                 }
+                self.dispatchGroup?.leave()
             }
         }
     }
@@ -93,6 +132,7 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
     {
         if !cargando
         {
+            
             loading?.showLoadingView()
             cargando = true
             off+=1
@@ -180,12 +220,18 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
             if distanceFromBottom < height {
                 if deviceDes
                 {
-                    self.getData(offset:off)
+                    if devices.count % 20 == 0
+                    {
+                        self.getData(offset:off)
+                    }
                     
                 }
                 else
                 {
-                    self.getFilteredData(data: self.searchText)
+                    if filteredDevices.count % 20 == 0
+                    {
+                        self.getFilteredData(data: self.searchText)
+                    }
                 }
             }
     }
