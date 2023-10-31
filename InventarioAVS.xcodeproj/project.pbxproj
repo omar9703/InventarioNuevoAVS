@@ -13,6 +13,10 @@
 		07EE7F6627AF7EF90003AE8D /* Reporte.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */; };
 		07EE7F6927AF7F0B0003AE8D /* ReporteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */; };
 		102B89EE27C5ED1000744853 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 102B89EC27C5ED1000744853 /* User.xcdatamodeld */; };
+		10BAC4BA2AF06ACA0092ED0E /* SearchReportProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAC4B82AF06ACA0092ED0E /* SearchReportProductViewController.swift */; };
+		10BAC4BB2AF06ACA0092ED0E /* SearchReportProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BAC4B92AF06ACA0092ED0E /* SearchReportProductViewController.xib */; };
+		10BAC4BE2AF0835B0092ED0E /* ReportPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAC4BC2AF0835B0092ED0E /* ReportPopUpViewController.swift */; };
+		10BAC4BF2AF0835B0092ED0E /* ReportPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BAC4BD2AF0835B0092ED0E /* ReportPopUpViewController.xib */; };
 		10E80D2328453ECC004D392F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10E80D2228453ECC004D392F /* Settings.storyboard */; };
 		10E80D2528453EE3004D392F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E80D2428453EE3004D392F /* SettingsViewController.swift */; };
 		10F08A8727D1364E0009B6F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F08A8627D1364E0009B6F4 /* User.swift */; };
@@ -66,6 +70,10 @@
 		07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reporte.storyboard; sourceTree = "<group>"; };
 		07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReporteViewController.swift; sourceTree = "<group>"; };
 		102B89ED27C5ED1000744853 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
+		10BAC4B82AF06ACA0092ED0E /* SearchReportProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReportProductViewController.swift; sourceTree = "<group>"; };
+		10BAC4B92AF06ACA0092ED0E /* SearchReportProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchReportProductViewController.xib; sourceTree = "<group>"; };
+		10BAC4BC2AF0835B0092ED0E /* ReportPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopUpViewController.swift; sourceTree = "<group>"; };
+		10BAC4BD2AF0835B0092ED0E /* ReportPopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportPopUpViewController.xib; sourceTree = "<group>"; };
 		10E80D2228453ECC004D392F /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		10E80D2428453EE3004D392F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		10F08A8627D1364E0009B6F4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -151,6 +159,27 @@
 			path = Reporte;
 			sourceTree = "<group>";
 		};
+		10BAC4B62AF06A860092ED0E /* Principal */ = {
+			isa = PBXGroup;
+			children = (
+				10FFC33227DFC80000BBB1B4 /* Cells */,
+				D606AB9A27BD939D00AEC2EB /* Levantar.storyboard */,
+				D606AB9D27BD93D900AEC2EB /* LevantarViewController.swift */,
+			);
+			path = Principal;
+			sourceTree = "<group>";
+		};
+		10BAC4B72AF06A920092ED0E /* Levantar */ = {
+			isa = PBXGroup;
+			children = (
+				10BAC4B82AF06ACA0092ED0E /* SearchReportProductViewController.swift */,
+				10BAC4B92AF06ACA0092ED0E /* SearchReportProductViewController.xib */,
+				10BAC4BC2AF0835B0092ED0E /* ReportPopUpViewController.swift */,
+				10BAC4BD2AF0835B0092ED0E /* ReportPopUpViewController.xib */,
+			);
+			path = Levantar;
+			sourceTree = "<group>";
+		};
 		10E80D2128453EA3004D392F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,9 +219,8 @@
 		D606AB9927BD938900AEC2EB /* LevantarReportes */ = {
 			isa = PBXGroup;
 			children = (
-				10FFC33227DFC80000BBB1B4 /* Cells */,
-				D606AB9A27BD939D00AEC2EB /* Levantar.storyboard */,
-				D606AB9D27BD93D900AEC2EB /* LevantarViewController.swift */,
+				10BAC4B72AF06A920092ED0E /* Levantar */,
+				10BAC4B62AF06A860092ED0E /* Principal */,
 			);
 			path = LevantarReportes;
 			sourceTree = "<group>";
@@ -472,6 +500,7 @@
 				D61B8B0D278E106C00CFABEE /* ProductoTableViewCell.xib in Resources */,
 				D6139F6527912AD000EB8C5F /* DetailViewController.xib in Resources */,
 				D6A2F455278FC1E70040258E /* QrReaderViewController.xib in Resources */,
+				10BAC4BB2AF06ACA0092ED0E /* SearchReportProductViewController.xib in Resources */,
 				D69273CC27A1C0A00079B253 /* Menu.storyboard in Resources */,
 				07EE7F5D27AF68760003AE8D /* Perfil.storyboard in Resources */,
 				D69273DC27A1C6290079B253 /* MenuCollectionViewCell.xib in Resources */,
@@ -480,6 +509,7 @@
 				D6F9A8A4278A4F74002D2591 /* Assets.xcassets in Resources */,
 				D6A2F44E278FBAAC0040258E /* UsersTableViewCell.xib in Resources */,
 				D6F9A8A2278A4F71002D2591 /* Main.storyboard in Resources */,
+				10BAC4BF2AF0835B0092ED0E /* ReportPopUpViewController.xib in Resources */,
 				D69273EA27A20B080079B253 /* UserDetailViewController.xib in Resources */,
 				D69273E327A1FD460079B253 /* ProductDetailTableViewCell.xib in Resources */,
 				D606AB9B27BD939D00AEC2EB /* Levantar.storyboard in Resources */,
@@ -498,10 +528,12 @@
 				D6139F6427912AD000EB8C5F /* DetailViewController.swift in Sources */,
 				D69273D627A1C3AA0079B253 /* MenuItems.swift in Sources */,
 				10FFC33527DFC81300BBB1B4 /* DescripcionTableViewCell.swift in Sources */,
+				10BAC4BA2AF06ACA0092ED0E /* SearchReportProductViewController.swift in Sources */,
 				D6F9A89F278A4F71002D2591 /* ViewController.swift in Sources */,
 				D61B8B0C278E106C00CFABEE /* ProductoTableViewCell.swift in Sources */,
 				D69273C227A0BF020079B253 /* LoginViewController.swift in Sources */,
 				D61B8AFB278E070000CFABEE /* Alerts.swift in Sources */,
+				10BAC4BE2AF0835B0092ED0E /* ReportPopUpViewController.swift in Sources */,
 				07EE7F5F27AF68A40003AE8D /* PerfilViewController.swift in Sources */,
 				10F08A8A27D13E750009B6F4 /* LoadingView.swift in Sources */,
 				D69273E927A20B080079B253 /* UserDetailViewController.swift in Sources */,

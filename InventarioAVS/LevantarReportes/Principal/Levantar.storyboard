@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9MA-4f-aTH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9MA-4f-aTH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ly-bE-TQk">
-                                <rect key="frame" x="0.0" y="172.5" width="414" height="604.5"/>
+                                <rect key="frame" x="0.0" y="172.5" width="414" height="679.5"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="Ingrese Codigo QR" translatesAutoresizingMaskIntoConstraints="NO" id="48S-n9-QS0">
                                         <rect key="frame" x="0.0" y="0.0" width="339" height="60"/>
@@ -74,7 +74,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wI2-Ax-kOT">
-                                        <rect key="frame" x="0.0" y="60" width="414" height="534.5"/>
+                                        <rect key="frame" x="0.0" y="60" width="414" height="609.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
@@ -92,29 +92,16 @@
                                     <constraint firstAttribute="bottom" secondItem="wI2-Ax-kOT" secondAttribute="bottom" constant="10" id="xuE-VW-FLA"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5o5-TW-pb3">
-                                <rect key="frame" x="60.5" y="810" width="293" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="293" id="8Fu-tP-b9P"/>
-                                    <constraint firstAttribute="height" constant="52" id="Yfd-Ee-aFe"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="CARGA3"/>
-                                <connections>
-                                    <action selector="addPhotoAction:" destination="01J-lp-oVM" eventType="touchUpInside" id="z3A-PK-lRQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="5o5-TW-pb3" firstAttribute="bottom" secondItem="Bcu-3y-fUS" secondAttribute="bottom" id="0Pc-AW-a5c"/>
                             <constraint firstItem="3Ly-bE-TQk" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="1DK-QB-Emf"/>
-                            <constraint firstItem="5o5-TW-pb3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7Tr-4q-9dF"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="3Ly-bE-TQk" secondAttribute="bottom" constant="10" id="MOH-Co-xLz"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="3Ly-bE-TQk" secondAttribute="trailing" id="Vyd-9m-lZl"/>
                             <constraint firstItem="3dP-Hj-T3M" firstAttribute="top" secondItem="u5L-Q2-ans" secondAttribute="bottom" constant="5" id="Ynt-HL-y0N"/>
                             <constraint firstItem="u5L-Q2-ans" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ZJz-Xa-ojP"/>
                             <constraint firstItem="3dP-Hj-T3M" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aJS-ah-TQc"/>
-                            <constraint firstItem="5o5-TW-pb3" firstAttribute="top" secondItem="3Ly-bE-TQk" secondAttribute="bottom" constant="33" id="bNF-wh-YOg"/>
                             <constraint firstItem="3Ly-bE-TQk" firstAttribute="top" secondItem="3dP-Hj-T3M" secondAttribute="bottom" constant="20" id="iTk-sg-3Re"/>
                             <constraint firstItem="3dP-Hj-T3M" firstAttribute="top" secondItem="u5L-Q2-ans" secondAttribute="bottom" constant="5" id="j0f-8s-oUW"/>
                             <constraint firstItem="u5L-Q2-ans" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="10" id="mP0-RT-W9Z"/>
@@ -129,7 +116,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="agregarFoto" destination="5o5-TW-pb3" id="D16-Or-iez"/>
                         <outlet property="searchCamera" destination="f12-of-yTc" id="XgO-oT-ASd"/>
                         <outlet property="tableReporte" destination="wI2-Ax-kOT" id="nkx-Iy-4rk"/>
                         <outlet property="testsearch" destination="48S-n9-QS0" id="Hen-87-Lpt"/>
@@ -160,6 +146,5 @@
     </scenes>
     <resources>
         <image name="ADMIN" width="196" height="187"/>
-        <image name="CARGA3" width="1078" height="187"/>
     </resources>
 </document>

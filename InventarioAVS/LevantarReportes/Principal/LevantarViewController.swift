@@ -37,47 +37,17 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
         hideKeyboardWhenTappedAround()
         loading = LoadingView()
         self.view.addSubview(loading!)
-        getDevices()
+       
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getDevices()
+    }
    
-    @IBAction func sendRequest(_ sender: UIBarButtonItem) {
-        if let d = device
-        {
-            if comentarios != "" && phtobase64 != ""
-            {
-                loading?.showLoadingView()
-                requestPetition(ofType: Device.self, typeRequest: .POST, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/reportes", parameters: ["dispositivoId":deviceDes ? d.id! : deviceFiltered!.id,"usuarioId":UsuarioData.GetUserId() ?? 0,"comentarios":comentarios,"foto":phtobase64]) { code, data in
-                    switch code
-                    {
-                    case 200...299:
-                        DispatchQueue.main.async {
-                            self.loading?.hideLoadingView()
-                            self.alertFunc(viewController: self, alertType: .successfullRegistration) { _ in
-                                DispatchQueue.main.async {
-                                    self.navigationController?.popViewController(animated: true)
-                                }
-                            }
-                        }
-                        break
-                    default:
-                        DispatchQueue.main.async {
-                            self.loading?.hideLoadingView()
-                            self.alerta(message: "Ocurrio un error en el servicio")
-                        }
-                        break
-                    }
-                }
-            }
-            else
-            {
-                self.alerta(message: "Seleccione una imagen y/o introduzca sus comentarios", title: "Error")
-            }
-        }
-        else
-        {
-            self.alerta(message: "Seleccione un dispositivo", title: "Error")
-        }
+    @IBAction func sendRequest(_ sender: UIBarButtonItem)
+    {
+        
     }
     @IBAction func openQRCamera(_ sender: UIButton) {
         let vc = QrReaderViewController()
@@ -94,7 +64,7 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
     func getDevices()
     {
         self.loading?.showLoadingView()
-        requestPetition(ofType: Reportes.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/reportes?limit=9&offset=1") { (httpcode, dataResponse) in
+        requestPetition(ofType: Reportes.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/reportes?limit=100&offset=1") { (httpcode, dataResponse) in
             if evaluateResponse(controller: self, httpCode: httpcode)
             {
                 
@@ -341,5 +311,10 @@ if descripcionReport
         }
     func convertImageToBase64String (img: UIImage) -> String {
         return img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.report = devices?.data[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
