@@ -69,9 +69,6 @@ func evaluateResponse( controller : UIViewController, httpCode : Int)->Bool{
         return true
     default:
         debugPrint("Entro al defult y manda alerta")
-        DispatchQueue.main.async {
-            controller.alertFunc(viewController: controller, alertType: .sorryErrorConection){ _ in}
-        }
         return false
     }
 }

@@ -40,32 +40,33 @@ class LoginViewController: UIViewController {
                 }
                 if evaluateResponse(controller: self, httpCode: httpcode)
                 {
-                if let response = response
-                {
-                    
-                    DispatchQueue.main.async {
-                        print(response.data)
-                        UsuarioData.SaveUser(user: response.data)
+                    if let response = response?.data
+                    {
+                        
+                        DispatchQueue.main.async {
+                            print(response)
+                            UsuarioData.SaveUser(user: response)
+                            
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
+                        {
+                            let vc = UIStoryboard(name: "Menu", bundle: nil).instantiateViewController(withIdentifier: "menuController")
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
                         
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
-                    {
-                                let vc = UIStoryboard(name: "Menu", bundle: nil).instantiateViewController(withIdentifier: "menuController")
-                                self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                    
-                }
                     else
                     {
-                        self.alertFunc(viewController: self, alertType: .incompleteInformation, message: "Error al iniciar sesión", titleAlert: "Error", titleButton: "Aceptar") { f in
-                            debugPrint("error")
+                        DispatchQueue.main.async {
+                            self.alerta(message: "Usuario y/o contraseña incorrectos", title: "Error")
                         }
+                        
                     }
                 }
                 else
                 {
-                    self.alertFunc(viewController: self, alertType: .incompleteInformation, message: "Error en el servicio", titleAlert: "Error", titleButton: "Aceptar") { f in
-                        debugPrint("error")
+                    DispatchQueue.main.async {
+                        self.alerta(message: "Usuario y/o contraseña incorrectos", title: "Error")
                     }
                 }
             }
