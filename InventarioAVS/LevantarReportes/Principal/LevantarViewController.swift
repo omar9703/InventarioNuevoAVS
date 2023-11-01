@@ -47,7 +47,8 @@ class LevantarViewController: UIViewController, UISearchBarDelegate, UITableView
    
     @IBAction func sendRequest(_ sender: UIBarButtonItem)
     {
-        
+        let vc = SearchReportProductViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func openQRCamera(_ sender: UIButton) {
         let vc = QrReaderViewController()
