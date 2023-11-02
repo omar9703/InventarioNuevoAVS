@@ -77,7 +77,7 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
             
             cargando = true
             off+=1
-            requestPetition(ofType: Historial.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/movimientos/filter/\(data)?offset=\(off)&limit=20") { (httpcode, dataResponse) in
+            requestPetition(ofType: Historial.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/movimientos/filter?offset=\(off)&limit=20",header: data) { (httpcode, dataResponse) in
                 self.cargando = false
                 self.resultCount+=1
                 if evaluateResponse(controller: self, httpCode: httpcode)
@@ -136,7 +136,7 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
             loading?.showLoadingView()
             cargando = true
             off+=1
-            requestPetition(ofType: Historial.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/movimientos?offset=\(off)&limit=20") { (httpcode, dataResponse) in
+            requestPetition(ofType: Historial.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/movimientos?offset=\(off)&limit=100") { (httpcode, dataResponse) in
                 self.cargando = false
                 if evaluateResponse(controller: self, httpCode: httpcode)
                 {
@@ -179,17 +179,17 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if !deviceDes
         {
             
-            cell.marca.text = filteredDevices[indexPath.row].dispositivo?.codigo
-            cell.modelo.text = filteredDevices[indexPath.row].lugar?.fechaAlta?.setDateProperly()
-            cell.nombre.text = filteredDevices[indexPath.row].dispositivo?.producto
-            cell.lugar.text = filteredDevices[indexPath.row].lugar?.lugar
+            cell.marca.text = filteredDevices[indexPath.row].nombre
+            cell.modelo.text = filteredDevices[indexPath.row].fechaAlta?.setDateProperly()
+            cell.nombre.text = filteredDevices[indexPath.row].producto
+            cell.lugar.text = filteredDevices[indexPath.row].lugar
         }
         else
         {
-            cell.marca.text = devices[indexPath.row].dispositivo?.codigo
-            cell.modelo.text = devices[indexPath.row].lugar?.fechaAlta?.setDateProperly()
-            cell.nombre.text = devices[indexPath.row].dispositivo?.producto
-            cell.lugar.text = devices[indexPath.row].lugar?.lugar
+            cell.marca.text = devices[indexPath.row].nombre
+            cell.modelo.text = devices[indexPath.row].fechaAlta?.setDateProperly()
+            cell.nombre.text = devices[indexPath.row].producto
+            cell.lugar.text = devices[indexPath.row].lugar
             
         }
         cell.backgroundColor = .clear
