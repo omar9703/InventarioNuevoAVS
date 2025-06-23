@@ -192,3 +192,13 @@ struct Usuarios: Codable {
 struct Message: Codable {
     let status: String
 }
+
+struct CostoResponse: Codable {
+    let app_code : String
+    let data : costoData?
+}
+
+struct costoData : Codable
+{
+    let TotalAmount : String?
+}

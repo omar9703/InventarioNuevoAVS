@@ -54,6 +54,23 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
+    @IBAction func openCosto(_ sender: UIBarButtonItem) {
+        self.loading?.showLoadingView()
+        requestPetition(ofType: CostoResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/getAmount") { code, data in
+            DispatchQueue.main.async {
+                self.loading?.hideLoadingView()
+                if let data = data?.data?.TotalAmount
+                {
+                    self.alerta(message: "Costo total: \(data.currencyFormatting())", title: "Listo")
+                }
+                else
+                {
+                    self.alerta(message: "Ocurrio un error en el servicio")
+                }
+            }
+        }
+        
+    }
     func getData(offset : Int)
     {
         debugPrint(cargando)
@@ -341,3 +358,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
 }
 
+extension String {
+    // formatting text for currency textField
+    func currencyFormatting() -> String {
+        if let value = Double(self) {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.maximumFractionDigits = 2
+            formatter.minimumFractionDigits = 2
+            if let str = formatter.string(for: value) {
+                return str
+            }
+        }
+        return ""
+    }
+}
