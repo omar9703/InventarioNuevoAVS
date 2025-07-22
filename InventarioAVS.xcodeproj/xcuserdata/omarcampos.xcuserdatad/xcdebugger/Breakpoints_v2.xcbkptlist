@@ -14,8 +14,8 @@
             filePath = "InventarioAVS/Menu/MenuViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "willMove(toParent:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -194,53 +194,6 @@
             endingLineNumber = "80"
             landmarkName = "getFilteredData(data:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B2E9E4FE-E6FA-4C23-9D02-F086E178F972 - 9f4f80f8f8cd4b89"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Int, Swift.Optional&lt;InventarioAVS.Historial&gt;) -&gt; () in InventarioAVS.ReporteViewController.getFilteredData(data: Swift.String) -&gt; ()"
-                  moduleName = "InventarioAVS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Reporte/ReporteViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "252">
-               </Location>
-               <Location
-                  uuid = "B2E9E4FE-E6FA-4C23-9D02-F086E178F972 - ebde06369a12ab1e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "InventarioAVS.ReporteViewController.getFilteredData(data: Swift.String) -&gt; ()"
-                  moduleName = "InventarioAVS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Reporte/ReporteViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "B2E9E4FE-E6FA-4C23-9D02-F086E178F972 - 9f4f80f8f8cd4be8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Int, Swift.Optional&lt;InventarioAVS.Historial&gt;) -&gt; () in InventarioAVS.ReporteViewController.getFilteredData(data: Swift.String) -&gt; ()"
-                  moduleName = "InventarioAVS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Reporte/ReporteViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "252">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -257,38 +210,6 @@
             endingLineNumber = "52"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9D441F13-4AAA-402A-9A99-11303D639931 - a57aa29c0cbec2d3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "InventarioAVS.ReporteViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
-                  moduleName = "InventarioAVS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Reporte/ReporteViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "276">
-               </Location>
-               <Location
-                  uuid = "9D441F13-4AAA-402A-9A99-11303D639931 - a57aa29c0cbec2f2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "InventarioAVS.ReporteViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
-                  moduleName = "InventarioAVS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Reporte/ReporteViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "160">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -401,38 +322,6 @@
             endingLineNumber = "63"
             landmarkName = "LoginAction(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6CFB5290-ADE2-4D29-A693-F52AF25A1781 - 77715622ea242335"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Int, Swift.Optional&lt;InventarioAVS.LoginResponse&gt;) -&gt; () in InventarioAVS.LoginViewController.LoginAction(__C.UIButton) -&gt; ()"
-                  moduleName = "InventarioAVS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Login/LoginViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "2412">
-               </Location>
-               <Location
-                  uuid = "6CFB5290-ADE2-4D29-A693-F52AF25A1781 - c87119b9595cfa4f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 (Swift.Bool) -&gt; () in closure #1 (Swift.Int, Swift.Optional&lt;InventarioAVS.LoginResponse&gt;) -&gt; () in InventarioAVS.LoginViewController.LoginAction(__C.UIButton) -&gt; ()"
-                  moduleName = "InventarioAVS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/omarcampos/Documents/GitHub/InventarioAVS/Login/LoginViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "92">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

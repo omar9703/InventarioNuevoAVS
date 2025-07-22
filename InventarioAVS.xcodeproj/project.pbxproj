@@ -13,6 +13,8 @@
 		07EE7F6627AF7EF90003AE8D /* Reporte.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */; };
 		07EE7F6927AF7F0B0003AE8D /* ReporteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */; };
 		102B89EE27C5ED1000744853 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 102B89EC27C5ED1000744853 /* User.xcdatamodeld */; };
+		102E59032E2EE02300967DC1 /* ExcelSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102E59012E2EE02300967DC1 /* ExcelSearchViewController.swift */; };
+		102E59042E2EE02300967DC1 /* ExcelSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 102E59022E2EE02300967DC1 /* ExcelSearchViewController.xib */; };
 		10BAC4BA2AF06ACA0092ED0E /* SearchReportProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAC4B82AF06ACA0092ED0E /* SearchReportProductViewController.swift */; };
 		10BAC4BB2AF06ACA0092ED0E /* SearchReportProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BAC4B92AF06ACA0092ED0E /* SearchReportProductViewController.xib */; };
 		10BAC4BE2AF0835B0092ED0E /* ReportPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAC4BC2AF0835B0092ED0E /* ReportPopUpViewController.swift */; };
@@ -70,6 +72,8 @@
 		07EE7F6527AF7EF90003AE8D /* Reporte.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reporte.storyboard; sourceTree = "<group>"; };
 		07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReporteViewController.swift; sourceTree = "<group>"; };
 		102B89ED27C5ED1000744853 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
+		102E59012E2EE02300967DC1 /* ExcelSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcelSearchViewController.swift; sourceTree = "<group>"; };
+		102E59022E2EE02300967DC1 /* ExcelSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExcelSearchViewController.xib; sourceTree = "<group>"; };
 		10BAC4B82AF06ACA0092ED0E /* SearchReportProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReportProductViewController.swift; sourceTree = "<group>"; };
 		10BAC4B92AF06ACA0092ED0E /* SearchReportProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchReportProductViewController.xib; sourceTree = "<group>"; };
 		10BAC4BC2AF0835B0092ED0E /* ReportPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopUpViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,15 @@
 				07EE7F6727AF7F0B0003AE8D /* ReporteViewController.swift */,
 			);
 			path = Reporte;
+			sourceTree = "<group>";
+		};
+		102E59002E2EDFF800967DC1 /* Excel */ = {
+			isa = PBXGroup;
+			children = (
+				102E59012E2EE02300967DC1 /* ExcelSearchViewController.swift */,
+				102E59022E2EE02300967DC1 /* ExcelSearchViewController.xib */,
+			);
+			path = Excel;
 			sourceTree = "<group>";
 		};
 		10BAC4B62AF06A860092ED0E /* Principal */ = {
@@ -410,6 +423,7 @@
 		D6F9A899278A4F71002D2591 /* InventarioAVS */ = {
 			isa = PBXGroup;
 			children = (
+				102E59002E2EDFF800967DC1 /* Excel */,
 				10E80D2128453EA3004D392F /* Settings */,
 				10F08A8827D13E0D0009B6F4 /* Loading */,
 				10F08A8527D135EF0009B6F4 /* Representations */,
@@ -493,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69273BB27A0BCC50079B253 /* Products.storyboard in Resources */,
+				102E59042E2EE02300967DC1 /* ExcelSearchViewController.xib in Resources */,
 				D6F9A8A7278A4F74002D2591 /* LaunchScreen.storyboard in Resources */,
 				10FFC33A27DFC8E900BBB1B4 /* ImagenTableViewCell.xib in Resources */,
 				D69273B827A0BC5E0079B253 /* users.storyboard in Resources */,
@@ -544,6 +559,7 @@
 				D61C39542793A86000FE42A1 /* HistorialViewController.swift in Sources */,
 				D69273E227A1FD460079B253 /* ProductDetailTableViewCell.swift in Sources */,
 				D61B8B12278E162700CFABEE /* FilterViewController.swift in Sources */,
+				102E59032E2EE02300967DC1 /* ExcelSearchViewController.swift in Sources */,
 				D69273DB27A1C6290079B253 /* MenuCollectionViewCell.swift in Sources */,
 				D6F9A89B278A4F71002D2591 /* AppDelegate.swift in Sources */,
 				D61B8B05278E087600CFABEE /* URL.swift in Sources */,

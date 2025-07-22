@@ -20,10 +20,23 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         MenuCollection.reloadData()
         self.navigationItem.title = ""
         setNavigationBar()
+        let buttonDerecho = UIBarButtonItem(image: UIImage(systemName: "receipt.fill"), style: .plain, target: self, action: #selector(openMovement))
+        self.navigationItem.rightBarButtonItem = buttonDerecho
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         MenuCollection.collectionViewLayout.invalidateLayout()
+    }
+    
+    @objc func openMovement()
+    {
+        if #available(iOS 15.0, *) {
+            let vc = ExcelSearchViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            // Fallback on earlier versions
+        }
+        
     }
     
     override func willMove(toParent parent: UIViewController?)
