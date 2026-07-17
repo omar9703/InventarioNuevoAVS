@@ -17,13 +17,14 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     var resultCount = 0
     var cargando = false
-    var off = 0
+    var off = -1
     var deviceDes = true
     var devices = [movimiento]()
     @IBOutlet weak var Anim: UIActivityIndicatorView!
     var loading : LoadingView?
     var searchText = ""
     var filteredDevices = [movimiento]()
+    var searchDebounceTimer: Timer?
     var dispatchGroup : DispatchGroup?
     @IBOutlet weak var search: UISearchBar!
     @IBOutlet weak var tableReportes: UITableView!
@@ -47,25 +48,26 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        deviceDes = false
+        searchDebounceTimer?.invalidate()
 
-        if searchText != ""
-        {
+        if searchText != "" {
+            deviceDes = false
             self.searchText = searchText
-            cargando = false
-            off=0
-            getFilteredData(data : searchText)
-        }
-        else
-        {
+
+            searchDebounceTimer = Timer.scheduledTimer(withTimeInterval: 1.2, repeats: false) { [weak self] _ in
+                guard let self = self else { return }
+                self.cargando = false
+                self.off = -1
+                self.getFilteredData(data: searchText)
+            }
+        } else {
             self.resultCount = 0
             self.searchText = ""
-            off+=1
+            off += 1
             deviceDes = true
             self.filteredDevices.removeAll()
+            self.tableReportes.reloadData()
         }
-        
-        self.tableReportes.reloadData()
     }
     
     func getFilteredData(data : String)
@@ -98,11 +100,9 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
                     DispatchQueue.main.async {
                         self.loading?.hideLoadingView()
                         self.tableReportes.reloadData()
-                        if self.searchText.count == self.resultCount
-                        {
+
                             self.Anim.isHidden = true
                             
-                        }
                     }
                     
                 }
@@ -110,11 +110,9 @@ class ReporteViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 {
                     DispatchQueue.main.async {
                         self.loading?.hideLoadingView()
-                        if self.searchText.count == self.resultCount
-                        {
+
                             self.Anim.isHidden = true
                             
-                        }
                     }
                     
                 }

@@ -23,7 +23,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var searchtext = ""
     var filteredDevices = [products]()
     var cargando = false
-    var off = 0
+    var off = -1
     var offFilter = 1
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -258,8 +258,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         {
             searchtext = searchText
             deviceDes = false
-            self.offFilter = 1
-            requestPetition(ofType: filterResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/filterdeviceFields?limit=30&offset=\(1)",header: searchText) { (httpcode, dataResponse) in
+            self.offFilter = 0
+            requestPetition(ofType: filterResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/filterdeviceFields?limit=30&offset=\(0)",header: searchText) { (httpcode, dataResponse) in
                 if evaluateResponse(controller: self, httpCode: httpcode)
                 {
                     debugPrint(dataResponse?.data.count)
