@@ -24,7 +24,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var filteredDevices = [products]()
     var cargando = false
     var off = -1
-    var offFilter = 1
+    var offFilter = 0
+    var searchTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingIndicator.hidesWhenStopped = true
@@ -86,7 +87,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     
                     for x in dataResponse!.data
                     {
-                        self.devices.append(x)
+                        if !self.devices.contains(where: { $0.id == x.id }) {
+                            self.devices.append(x)
+                        }
                     }
                     DispatchQueue.main.async {
                         self.loading?.hideLoadingView()
@@ -128,7 +131,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     }
                     for x in dataResponse!.data
                     {
-                        self.filteredDevices.append(x)
+                        if !self.filteredDevices.contains(where: { $0.id == x.id }) {
+                            self.filteredDevices.append(x)
+                        }
                     }
                     DispatchQueue.main.async {
                         self.totalrows.text =  "Total de articulos: \(dataResponse?.total_rows ?? 0) "
@@ -169,7 +174,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if !deviceDes
         {
             
-            cell.marca.text = filteredDevices[indexPath.row].marca
+            cell.marca.text = filteredDevices[indexPath.row].codigo
             cell.modelo.text = filteredDevices[indexPath.row].modelo
             cell.nombre.text = filteredDevices[indexPath.row].producto
             cell.lugar.text = filteredDevices[indexPath.row].lugar
@@ -253,53 +258,46 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if searchText != ""
-        {
-            searchtext = searchText
-            deviceDes = false
-            self.offFilter = 0
-            requestPetition(ofType: filterResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/filterdeviceFields?limit=30&offset=\(0)",header: searchText) { (httpcode, dataResponse) in
-                if evaluateResponse(controller: self, httpCode: httpcode)
-                {
-                    debugPrint(dataResponse?.data.count)
-                    
-                    if dataResponse?.data.count ?? 0 < 30
-                    {
-                        self.cargandoFilter = true
+        searchTimer?.invalidate()
+
+        if searchText != "" {
+            totalrows.isHidden = true
+            searchTimer = Timer.scheduledTimer(withTimeInterval: 1.2, repeats: false) { [weak self] _ in
+                guard let self = self else { return }
+                self.searchtext = searchText
+                self.deviceDes = false
+                self.offFilter = 0
+                requestPetition(ofType: filterResponse.self, typeRequest: .GET, url: "https://avsinventoryswagger25.azurewebsites.net/api/v1/dispositivos/filterdeviceFields?limit=30&offset=\(0)", header: searchText) { (httpcode, dataResponse) in
+                    if evaluateResponse(controller: self, httpCode: httpcode) {
+                        debugPrint(dataResponse?.data.count)
+                        if dataResponse?.data.count ?? 0 < 30 {
+                            self.cargandoFilter = true
+                        } else {
+                            self.cargandoFilter = false
+                        }
+                        self.filteredDevices.removeAll()
+                        var seen = Set<Int>()
+                        self.filteredDevices = (dataResponse?.data ?? []).filter { seen.insert($0.id).inserted }
+                        DispatchQueue.main.async {
+                            self.totalrows.isHidden = false
+                            self.totalrows.text = "Total de articulos: \(dataResponse?.total_rows ?? 0) "
+                            self.productsTable.reloadData()
+                        }
                     }
-                    else
-                    {
-                        self.cargandoFilter = false
-                    }
-                    self.filteredDevices.removeAll()
-                    self.filteredDevices = dataResponse?.data ?? [products]()
-                    DispatchQueue.main.async {
-                        self.totalrows.isHidden = false
-                        self.totalrows.text =  "Total de articulos: \(dataResponse?.total_rows ?? 0) "
-                        self.productsTable.reloadData()
-                    }
-                    
-                }
-                else
-                {
-                    
                 }
             }
-            
-        }
-        else
-        {
+        } else {
             deviceDes = true
             totalrows.isHidden = true
             filteredDevices.removeAll()
             self.productsTable.reloadData()
         }
-        
-        
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchTimer?.invalidate()
         deviceDes = true
+        totalrows.isHidden = true
+        filteredDevices.removeAll()
         self.productsTable.reloadData()
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
